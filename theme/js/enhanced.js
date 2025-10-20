@@ -5,13 +5,23 @@ let questionsData = [];
 
 // Load questions from JSON file
 async function loadQuestions() {
-  const possiblePaths = [
-    './questions.json',
-    '../questions.json', 
-    '/questions.json',
-    'questions.json'
-  ];
+  // Check if we're in development mode (localhost)
+  const isDevelopment = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
   
+  const possiblePaths = isDevelopment 
+    ? [
+        "./questions.json",
+        "../questions.json", 
+        "/questions.json",
+        "questions.json"
+      ]
+    : [
+        "/questions.json",
+        "./questions.json",
+        "../questions.json",
+        "questions.json"
+      ];
+
   for (let path of possiblePaths) {
     try {
       console.log(`Trying to fetch questions from: ${path}`);
@@ -28,8 +38,20 @@ async function loadQuestions() {
       console.log(`Error loading from ${path}:`, error.message);
     }
   }
+
+  console.error("Failed to load questions from all paths, using embedded fallback");
   
-  console.error("Failed to load questions from all paths");
+  // Fallback embedded questions for development
+  questionsData = [
+    {
+      "question": "Which of the following Nmap options is used to control the timing and speed of a scan?",
+      "options": ["nmap -T", "nmap -sV", "nmap -A", "nmap -O"],
+      "correctAnswer": "nmap -T",
+      "module": "3"
+    }
+  ];
+  
+  console.log("Using embedded questions:", questionsData.length);
 }
 
 // Extract module number from various sources
