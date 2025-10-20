@@ -6,6 +6,8 @@ A comprehensive study guide for the **Certified Ethical Hacker version 13 (CEH v
 
 🔗 **Live Site**: [https://beingfluid.github.io/CEHv13/](https://beingfluid.github.io/CEHv13/)
 
+**Last Updated**: October 20, 2025 - Enhanced with improved navigation and styling
+
 ## 📚 About This Guide
 
 This study guide covers all 19 modules of the CEH v13 certification curriculum:
