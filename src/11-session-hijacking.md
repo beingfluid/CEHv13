@@ -1,4 +1,7 @@
-# Module 11: Session Hijacking
+---
+module: "11"
+title: "Session Hijacking"
+---
 
 ## Course Outline
 

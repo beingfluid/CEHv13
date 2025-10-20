@@ -3,8 +3,6 @@ module: "3"
 title: "Scanning Networks"
 ---
 
-# Module 3: Scanning Networks
-
 ## Course Outline
 
 Learn different network scanning techniques and countermeasures.
@@ -209,7 +207,3 @@ nmap -6 -sS 2001:db8::1
 - Nikto (Web vulnerability)
 
 ## Practice Questions
-
-<div id="practice-questions-container" data-module="3">
-<!-- Questions will be loaded dynamically from questions.json -->
-</div>

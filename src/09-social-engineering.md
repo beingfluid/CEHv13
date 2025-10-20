@@ -1,4 +1,7 @@
-# Module 9: Social Engineering
+---
+module: "9"
+title: "Social Engineering"
+---
 
 ## Course Outline
 

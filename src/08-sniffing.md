@@ -1,4 +1,7 @@
-# Module 8: Sniffing
+---
+module: "8"
+title: "Sniffing"
+---
 
 ## Course Outline
 

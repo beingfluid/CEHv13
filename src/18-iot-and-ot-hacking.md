@@ -1,4 +1,7 @@
-# Module 18: IoT and OT Hacking
+---
+module: "18"
+title: "IoT and OT Hacking"
+---
 
 ## Course Outline
 

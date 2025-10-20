@@ -1,4 +1,7 @@
-# Module 12: Evading IDS, Firewalls, and Honeypots
+---
+module: "12"
+title: "Evading IDS, Firewalls, and Honeypots"
+---
 
 ## Course Outline
 

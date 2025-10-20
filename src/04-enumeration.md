@@ -1,4 +1,7 @@
-# Module 4: Enumeration
+---
+module: "4"
+title: "Enumeration"
+---
 
 ## Course Outline
 

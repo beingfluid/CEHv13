@@ -6,20 +6,22 @@ let questionsData = [];
 // Load questions from JSON file
 async function loadQuestions() {
   // Check if we're in development mode (localhost)
-  const isDevelopment = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-  
-  const possiblePaths = isDevelopment 
+  const isDevelopment =
+    window.location.hostname === "localhost" ||
+    window.location.hostname === "127.0.0.1";
+
+  const possiblePaths = isDevelopment
     ? [
         "./questions.json",
-        "../questions.json", 
+        "../questions.json",
         "/questions.json",
-        "questions.json"
+        "questions.json",
       ]
     : [
         "/questions.json",
         "./questions.json",
         "../questions.json",
-        "questions.json"
+        "questions.json",
       ];
 
   for (let path of possiblePaths) {
@@ -39,24 +41,34 @@ async function loadQuestions() {
     }
   }
 
-  console.error("Failed to load questions from all paths, using embedded fallback");
-  
+  console.error(
+    "Failed to load questions from all paths, using embedded fallback"
+  );
+
   // Fallback embedded questions for development
   questionsData = [
     {
-      "question": "Which of the following Nmap options is used to control the timing and speed of a scan?",
-      "options": ["nmap -T", "nmap -sV", "nmap -A", "nmap -O"],
-      "correctAnswer": "nmap -T",
-      "module": "3"
-    }
+      question:
+        "Which of the following Nmap options is used to control the timing and speed of a scan?",
+      options: ["nmap -T", "nmap -sV", "nmap -A", "nmap -O"],
+      correctAnswer: "nmap -T",
+      module: "3",
+    },
   ];
-  
+
   console.log("Using embedded questions:", questionsData.length);
 }
 
 // Extract module number from various sources
 function getCurrentModule() {
-  // First try to get module from data attribute in practice questions container
+  // First priority: Check for front matter data injected by head template
+  if (window.pageMetadata && window.pageMetadata.module) {
+    const module = window.pageMetadata.module;
+    console.log("Module from front matter:", module);
+    return module;
+  }
+
+  // Second priority: Get module from data attribute in practice questions container
   const practiceContainer = document.getElementById(
     "practice-questions-container"
   );
@@ -66,7 +78,7 @@ function getCurrentModule() {
     return module;
   }
 
-  // Try to get module from page metadata
+  // Third priority: Get module from page metadata
   const metaTags = document.querySelectorAll("meta");
   for (let meta of metaTags) {
     if (meta.getAttribute("name") === "module") {
@@ -135,6 +147,71 @@ function generateQuestionsHTML(moduleQuestions) {
     `;
   });
   return html;
+}
+
+// Create practice questions container dynamically from front matter
+function createPracticeQuestionsContainer() {
+  const currentModule = getCurrentModule();
+
+  // Only create if we have module metadata and no container exists
+  if (
+    !currentModule ||
+    document.getElementById("practice-questions-container")
+  ) {
+    return;
+  }
+
+  // Look for Practice Questions header
+  const practiceHeaders = document.querySelectorAll("h2");
+  let practiceHeader = null;
+
+  for (let header of practiceHeaders) {
+    if (header.textContent.includes("Practice Questions")) {
+      practiceHeader = header;
+      break;
+    }
+  }
+
+  if (practiceHeader) {
+    console.log(
+      "Creating dynamic practice questions container for module",
+      currentModule
+    );
+
+    // Create the container
+    const container = document.createElement("div");
+    container.id = "practice-questions-container";
+    container.setAttribute("data-module", currentModule);
+
+    // Add some styling
+    container.style.marginTop = "1rem";
+
+    // Insert after the header
+    practiceHeader.parentNode.insertBefore(
+      container,
+      practiceHeader.nextSibling
+    );
+
+    console.log("✅ Dynamic practice questions container created");
+  }
+}
+
+// Update page title dynamically from front matter
+function updatePageTitle() {
+  if (
+    window.pageMetadata &&
+    window.pageMetadata.module &&
+    window.pageMetadata.moduleTitle
+  ) {
+    const newTitle = `Module ${window.pageMetadata.module}: ${window.pageMetadata.moduleTitle}`;
+
+    // Update the main heading if it exists
+    const mainHeading = document.querySelector("h1");
+    if (mainHeading) {
+      mainHeading.textContent = newTitle;
+      console.log("Updated page title to:", newTitle);
+    }
+  }
 }
 
 // Load and display questions for current module
@@ -454,11 +531,20 @@ document.addEventListener("DOMContentLoaded", () => {
   // Wait a bit to let other scripts initialize first
   setTimeout(() => {
     console.log("🔧 Starting enhancements after delay...");
+
+    // Front matter based enhancements (highest priority)
+    updatePageTitle();
+    createPracticeQuestionsContainer();
+
+    // Other enhancements
     createProgressBar();
     addCopyButtons();
     createAlertBoxes();
     enhanceKeyboardNavigation();
     enhanceNavigationButtons();
+
+    // Load practice questions (after container creation)
+    loadModuleQuestions();
 
     console.log("🎨 CEH Study Guide enhanced styling loaded!");
   }, 100);

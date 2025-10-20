@@ -1,4 +1,7 @@
-# Module 19: Cloud Computing
+---
+module: "19"
+title: "Cloud Computing"
+---
 
 ## Course Outline
 

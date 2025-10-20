@@ -1,4 +1,7 @@
-# Module 10: Denial-of-Service
+---
+module: "10"
+title: "Denial-of-Service"
+---
 
 ## Course Outline
 

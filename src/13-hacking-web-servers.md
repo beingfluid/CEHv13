@@ -1,4 +1,7 @@
-# Module 13: Hacking Web Servers
+---
+module: "13"
+title: "Hacking Web Servers"
+---
 
 ## Course Outline
 

@@ -1,4 +1,7 @@
-# Module 20: Cryptography
+---
+module: "20"
+title: "Cryptography"
+---
 
 ## Course Outline
 

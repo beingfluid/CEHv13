@@ -1,4 +1,7 @@
-# Module 6: System Hacking
+---
+module: "6"
+title: "System Hacking"
+---
 
 ## Course Outline
 

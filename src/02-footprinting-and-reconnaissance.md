@@ -1,4 +1,7 @@
-# Module 2: Footprinting and Reconnaissance
+---
+module: "2"
+title: "Footprinting and Reconnaissance"
+---
 
 ## Course Outline
 

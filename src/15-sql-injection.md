@@ -1,4 +1,7 @@
-# Module 15: SQL Injection
+---
+module: "15"
+title: "SQL Injection"
+---
 
 ## Course Outline
 

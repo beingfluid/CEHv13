@@ -1,4 +1,7 @@
-# Module 17: Hacking Mobile Platforms
+---
+module: "17"
+title: "Hacking Mobile Platforms"
+---
 
 ## Course Outline
 

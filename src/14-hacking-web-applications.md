@@ -1,4 +1,7 @@
-# Module 14: Hacking Web Applications
+---
+module: "14"
+title: "Hacking Web Applications"
+---
 
 ## Course Outline
 
