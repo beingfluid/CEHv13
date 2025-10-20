@@ -204,3 +204,12 @@ nmap -6 -sS 2001:db8::1
 - Nikto (Web vulnerability)
 
 ## Practice Questions
+
+### Question 1
+
+**Which of the following Nmap options is used to control the timing and speed of a scan?**
+
+- ✅ **nmap -T** _(Correct)_
+- ❌ nmap -sV
+- ❌ nmap -A
+- ❌ nmap -O
