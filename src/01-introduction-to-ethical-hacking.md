@@ -101,7 +101,3 @@ Always ensure you have:
 - Follow established methodologies and frameworks
 - Document all findings and provide remediation guidance
 - Stay current with legal and regulatory requirements
-
----
-
-**Next:** [Module 2: Footprinting and Reconnaissance](./02-footprinting-and-reconnaissance.md)

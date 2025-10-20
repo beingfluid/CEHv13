@@ -394,7 +394,3 @@ nmap -6 -sS 2001:db8::1
 - Stealth techniques help avoid detection
 - Proper countermeasures can effectively detect and prevent scanning
 - Always follow ethical guidelines and legal requirements
-
----
-
-**Previous:** [Module 2: Footprinting and Reconnaissance](./02-footprinting-and-reconnaissance.md) | **Next:** [Module 4: Enumeration](./04-enumeration.md)

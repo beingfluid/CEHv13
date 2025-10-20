@@ -46,4 +46,4 @@ This workspace contains a comprehensive mdBook-based study guide for the Certifi
 
 ---
 
-*This workspace is set up for efficient mdBook development and maintenance.*
+_This workspace is set up for efficient mdBook development and maintenance._

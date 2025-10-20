@@ -284,7 +284,3 @@ inurl:admin site:example.com
 - Information is available from numerous public sources
 - Proper countermeasures can significantly reduce information leakage
 - Regular audits help identify and minimize information exposure
-
----
-
-**Previous:** [Module 1: Introduction to Ethical Hacking](./01-introduction-to-ethical-hacking.md) | **Next:** [Module 3: Scanning Networks](./03-scanning-networks.md)
