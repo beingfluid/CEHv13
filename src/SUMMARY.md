@@ -16,13 +16,14 @@
 - [Module 10: Denial-of-Service](./10-denial-of-service.md)
 - [Module 11: Session Hijacking](./11-session-hijacking.md)
 - [Module 12: Evading IDS, Firewalls, and Honeypots](./12-evading-ids-firewalls-honeypots.md)
-- [Module 13: Hacking Web Applications](./13-hacking-web-applications.md)
-- [Module 14: SQL Injection](./14-sql-injection.md)
-- [Module 15: Hacking Wireless Networks](./15-hacking-wireless-networks.md)
-- [Module 16: Hacking Mobile Platforms](./16-hacking-mobile-platforms.md)
-- [Module 17: IoT and OT Hacking](./17-iot-and-ot-hacking.md)
-- [Module 18: Cloud Computing](./18-cloud-computing.md)
-- [Module 19: Cryptography](./19-cryptography.md)
+- [Module 13: Hacking Web Servers](./13-hacking-web-servers.md)
+- [Module 14: Hacking Web Applications](./14-hacking-web-applications.md)
+- [Module 15: SQL Injection](./15-sql-injection.md)
+- [Module 16: Hacking Wireless Networks](./16-hacking-wireless-networks.md)
+- [Module 17: Hacking Mobile Platforms](./17-hacking-mobile-platforms.md)
+- [Module 18: IoT and OT Hacking](./18-iot-and-ot-hacking.md)
+- [Module 19: Cloud Computing](./19-cloud-computing.md)
+- [Module 20: Cryptography](./20-cryptography.md)
 
 ## Appendices
 

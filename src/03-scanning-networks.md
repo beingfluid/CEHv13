@@ -1,5 +1,27 @@
 # Module 3: Scanning Networks
 
+## Course Outline
+
+Learn different network scanning techniques and countermeasures.
+
+**Hands-on Labs:**
+
+- Perform host, port, service, and OS discovery on the target network
+- Perform scanning on the target network beyond IDS and Firewall
+- Perform scanning using AI
+
+**Key topics covered:**
+
+- Network Scanning
+- Scanning Tools
+- Host Discovery Techniques
+- Port Scanning Techniques
+- Host Discovery and Port Scanning with AI
+- Service Version Discovery
+- OS Discovery/Banner Grabbing
+- Scanning Beyond IDS and Firewall
+- Scanning Detection and Prevention
+
 ## Learning Objectives
 
 After completing this module, you will be able to:
