@@ -12,6 +12,12 @@
     {
       "label": "Build mdBook",
       "type": "shell",
+      "command": "./build.sh",
+      "group": "build"
+    },
+    {
+      "label": "Build mdBook (Original)",
+      "type": "shell",
       "command": "mdbook build",
       "group": "build"
     }

@@ -5,22 +5,31 @@ let questionsData = [];
 
 // Load questions from JSON file
 async function loadQuestions() {
-  try {
-    const response = await fetch("/questions.json");
-    questionsData = await response.json();
-    console.log("Questions loaded:", questionsData.length);
-    console.log("Questions data:", questionsData);
-  } catch (error) {
-    console.error("Error loading questions:", error);
-    // Fallback: try relative path
+  const possiblePaths = [
+    './questions.json',
+    '../questions.json', 
+    '/questions.json',
+    'questions.json'
+  ];
+  
+  for (let path of possiblePaths) {
     try {
-      const response2 = await fetch("../questions.json");
-      questionsData = await response2.json();
-      console.log("Questions loaded (fallback):", questionsData.length);
-    } catch (error2) {
-      console.error("Error loading questions (fallback):", error2);
+      console.log(`Trying to fetch questions from: ${path}`);
+      const response = await fetch(path);
+      if (response.ok) {
+        questionsData = await response.json();
+        console.log("Questions loaded successfully:", questionsData.length);
+        console.log("Questions data:", questionsData);
+        return;
+      } else {
+        console.log(`Failed to load from ${path}: ${response.status}`);
+      }
+    } catch (error) {
+      console.log(`Error loading from ${path}:`, error.message);
     }
   }
+  
+  console.error("Failed to load questions from all paths");
 }
 
 // Extract module number from various sources
