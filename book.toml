@@ -15,6 +15,9 @@ git-repository-url = "https://github.com/beingfluid/CEHv13"
 edit-url-template = "https://github.com/beingfluid/CEHv13/edit/main/{path}"
 no-section-label = false
 curly-quotes = false
+git-repository-icon = "fa-github"
+site-url = "https://beingfluid.github.io/CEHv13/"
+additional-css = ["./theme/css/extra.css"]
 
 [output.html.search]
 enable = true

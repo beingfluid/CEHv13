@@ -1,0 +1,135 @@
+/* Enhanced Previous/Next Navigation */
+
+/* Add visible text labels to navigation */
+.nav-wrapper .mobile-nav-chapters::after,
+.nav-wide-wrapper .nav-chapters::after {
+    font-size: 0.9em;
+    margin-left: 8px;
+    font-weight: 500;
+}
+
+.nav-wrapper .mobile-nav-chapters.previous::after,
+.nav-wide-wrapper .nav-chapters.previous::after {
+    content: "Previous";
+}
+
+.nav-wrapper .mobile-nav-chapters.next::after,
+.nav-wide-wrapper .nav-chapters.next::after {
+    content: "Next";
+}
+
+/* Style the navigation wrapper */
+.nav-wrapper, .nav-wide-wrapper {
+    margin-top: 3rem;
+    padding: 1.5rem 0;
+    border-top: 2px solid var(--sidebar-bg);
+    background: rgba(var(--sidebar-bg), 0.1);
+}
+
+/* Make navigation buttons more prominent */
+.nav-chapters, .mobile-nav-chapters {
+    display: inline-flex !important;
+    align-items: center;
+    padding: 12px 20px;
+    background: var(--theme-hover);
+    border: 2px solid var(--theme-popup-border);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin: 8px;
+    font-weight: 600;
+    color: var(--fg) !important;
+    min-width: 120px;
+    justify-content: center;
+}
+
+.nav-chapters:hover, .mobile-nav-chapters:hover {
+    background: var(--sidebar-active);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Position navigation properly */
+.nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1.5rem 1rem;
+}
+
+.nav-wide-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem;
+}
+
+/* Icon styling */
+.nav-chapters i, .mobile-nav-chapters i {
+    font-size: 1.3em;
+    margin-right: 8px;
+}
+
+/* Previous button alignment */
+.nav-chapters.previous, .mobile-nav-chapters.previous {
+    margin-right: auto;
+}
+
+/* Next button alignment */
+.nav-chapters.next, .mobile-nav-chapters.next {
+    margin-left: auto;
+}
+
+/* Add some space if only one navigation button exists */
+.nav-chapters:only-child, .mobile-nav-chapters:only-child {
+    margin: 8px auto;
+}
+
+/* Responsive behavior */
+@media (max-width: 768px) {
+    .nav-wide-wrapper {
+        display: none;
+    }
+    
+    .nav-chapters, .mobile-nav-chapters {
+        padding: 10px 16px;
+        font-size: 0.9em;
+    }
+}
+
+@media (min-width: 769px) {
+    .nav-wrapper {
+        display: none;
+    }
+}
+
+/* Light theme adjustments */
+.light .nav-chapters, .light .mobile-nav-chapters {
+    background: #f4f4f4;
+    border-color: #d3d3d3;
+    color: #333 !important;
+}
+
+.light .nav-chapters:hover, .light .mobile-nav-chapters:hover {
+    background: #e8e8e8;
+}
+
+/* Dark theme adjustments */
+.navy .nav-chapters, .navy .mobile-nav-chapters,
+.coal .nav-chapters, .coal .mobile-nav-chapters,
+.ayu .nav-chapters, .ayu .mobile-nav-chapters {
+    background: #3b4252;
+    border-color: #5e81ac;
+    color: #d8dee9 !important;
+}
+
+.navy .nav-chapters:hover, .navy .mobile-nav-chapters:hover,
+.coal .nav-chapters:hover, .coal .mobile-nav-chapters:hover,
+.ayu .nav-chapters:hover, .ayu .mobile-nav-chapters:hover {
+    background: #5e81ac;
+    color: #eceff4 !important;
+}
