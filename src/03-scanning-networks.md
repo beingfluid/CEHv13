@@ -205,11 +205,4 @@ nmap -6 -sS 2001:db8::1
 
 ## Practice Questions
 
-### Question 1
-
-**Which of the following Nmap options is used to control the timing and speed of a scan?**
-
-- ✅ **nmap -T** _(Correct)_
-- ❌ nmap -sV
-- ❌ nmap -A
-- ❌ nmap -O
+<!-- Questions will be loaded dynamically from questions.json -->

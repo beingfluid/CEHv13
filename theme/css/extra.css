@@ -675,3 +675,76 @@ code:not(.hljs) {
 #content main {
   animation: fadeInUp 0.6s ease-out;
 }
+
+/* Dynamic Practice Questions Styling */
+.dynamic-questions {
+  margin: 2rem 0;
+}
+
+.practice-question {
+  background: var(--theme-hover);
+  border: 2px solid var(--theme-popup-border);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.practice-question h3 {
+  color: var(--sidebar-active);
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.practice-question p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.question-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  background: var(--theme-popup-bg);
+}
+
+.option.correct {
+  border-color: #48bb78;
+  background: rgba(72, 187, 120, 0.1);
+}
+
+.option.incorrect {
+  border-color: #f56565;
+  background: rgba(245, 101, 101, 0.05);
+}
+
+.option-indicator {
+  margin-right: 1rem;
+  font-size: 1.2rem;
+  min-width: 30px;
+}
+
+.option-text {
+  flex: 1;
+  font-size: 1rem;
+}
+
+.option-text.correct-text {
+  font-weight: 600;
+  color: var(--sidebar-active);
+}
+
+.option-text em {
+  color: #48bb78;
+  font-style: italic;
+}

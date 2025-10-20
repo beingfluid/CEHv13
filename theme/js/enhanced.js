@@ -1,5 +1,101 @@
 // Enhanced CEH Study Guide JavaScript
 
+// Dynamic Practice Questions System
+let questionsData = [];
+
+// Load questions from JSON file
+async function loadQuestions() {
+  try {
+    const response = await fetch('../questions.json');
+    questionsData = await response.json();
+    console.log('Questions loaded:', questionsData.length);
+  } catch (error) {
+    console.error('Error loading questions:', error);
+  }
+}
+
+// Extract module number from current page
+function getCurrentModule() {
+  const path = window.location.pathname;
+  const match = path.match(/(\d+)-/);
+  return match ? match[1] : null;
+}
+
+// Generate HTML for practice questions
+function generateQuestionsHTML(moduleQuestions) {
+  if (moduleQuestions.length === 0) {
+    return '<p><em>No practice questions available for this module yet.</em></p>';
+  }
+
+  let html = '';
+  moduleQuestions.forEach((q, index) => {
+    html += `
+      <div class="practice-question" data-question-index="${index}">
+        <h3>Question ${index + 1}</h3>
+        <p><strong>${q.question}</strong></p>
+        <div class="question-options">
+          ${q.options.map((option, optIndex) => `
+            <div class="option ${option === q.correctAnswer ? 'correct' : 'incorrect'}" 
+                 data-option="${option}">
+              <span class="option-indicator">
+                ${option === q.correctAnswer ? '✅' : '❌'}
+              </span>
+              <span class="option-text ${option === q.correctAnswer ? 'correct-text' : ''}">
+                ${option === q.correctAnswer ? `<strong>${option}</strong> <em>(Correct)</em>` : option}
+              </span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  });
+  return html;
+}
+
+// Load and display questions for current module
+async function loadModuleQuestions() {
+  const currentModule = getCurrentModule();
+  if (!currentModule) return;
+
+  // Wait for questions to load if not already loaded
+  if (questionsData.length === 0) {
+    await loadQuestions();
+  }
+
+  // Filter questions for current module
+  const moduleQuestions = questionsData.filter(q => q.module === currentModule);
+  
+  // Find practice questions section
+  const practiceHeaders = document.querySelectorAll('h2');
+  let practiceSection = null;
+  
+  practiceHeaders.forEach(header => {
+    if (header.textContent.includes('Practice Questions')) {
+      practiceSection = header;
+    }
+  });
+  
+  if (practiceSection) {
+    const questionsContainer = document.createElement('div');
+    questionsContainer.className = 'dynamic-questions';
+    questionsContainer.innerHTML = generateQuestionsHTML(moduleQuestions);
+    
+    // Find the comment placeholder and replace it, or insert after the header
+    let nextElement = practiceSection.nextElementSibling;
+    while (nextElement && nextElement.nodeType === 8) { // Skip comment nodes
+      nextElement = nextElement.nextElementSibling;
+    }
+    
+    if (nextElement && nextElement.textContent && nextElement.textContent.includes('Questions will be loaded dynamically')) {
+      nextElement.replaceWith(questionsContainer);
+    } else {
+      practiceSection.parentNode.insertBefore(questionsContainer, practiceSection.nextSibling);
+    }
+    
+    console.log(`Loaded ${moduleQuestions.length} questions for module ${currentModule}`);
+  }
+}
+
 // Enhance navigation buttons with text labels
 function enhanceNavigationButtons() {
   // Find all navigation buttons
@@ -277,4 +373,9 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }, 1000);
+
+  // Initialize dynamic questions system
+  loadQuestions().then(() => {
+    loadModuleQuestions();
+  });
 });
