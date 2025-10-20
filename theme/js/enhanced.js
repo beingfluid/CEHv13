@@ -55,41 +55,113 @@ function createProgressBar() {
   });
 }
 
-// Add copy buttons to code blocks
+// Add copy buttons to code blocks (skip bash blocks completely)
 function addCopyButtons() {
-  const codeBlocks = document.querySelectorAll("pre code");
+  console.log("🔧 Adding copy buttons to code blocks...");
 
-  codeBlocks.forEach(codeBlock => {
+  // First, remove ALL existing copy buttons from the entire page
+  const allExistingButtons = document.querySelectorAll(
+    ".copy-button, button[title*='copy'], button[title*='Copy']"
+  );
+  console.log(
+    `🗑️ Found ${allExistingButtons.length} existing copy buttons to remove`
+  );
+  allExistingButtons.forEach((btn, i) => {
+    console.log(`Removing button ${i}:`, btn.textContent, btn.className);
+    btn.remove();
+  });
+
+  const codeBlocks = document.querySelectorAll("pre code");
+  console.log(`Found ${codeBlocks.length} code blocks`);
+
+  codeBlocks.forEach((codeBlock, index) => {
     const pre = codeBlock.parentElement;
+
+    // Check if this is a bash code block
+    const isBashBlock =
+      codeBlock.classList.contains("language-bash") ||
+      codeBlock.parentElement.classList.contains("language-bash") ||
+      codeBlock.className.includes("language-bash") ||
+      pre.className.includes("language-bash");
+
+    console.log(`Block ${index}:`, {
+      codeClasses: codeBlock.className,
+      preClasses: pre.className,
+      allButtons: pre.querySelectorAll("button").length,
+      isBash: isBashBlock,
+    });
+
+    // Final safety check - don't add if copy button already exists
+    if (pre.querySelector(".copy-button")) {
+      console.log(`⏭️ Copy button already exists for block ${index}`);
+      return;
+    }
+
     const copyButton = document.createElement("button");
     copyButton.className = "copy-button";
     copyButton.innerHTML = "📋 Copy";
-    copyButton.style.cssText = `
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            background: var(--primary-blue);
-            color: white;
-            border: none;
-            padding: 6px 12px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.8rem;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        `;
+
+    // Style the button differently for bash vs regular blocks
+    if (isBashBlock) {
+      // For bash blocks: position in terminal header area
+      copyButton.style.cssText = `
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: rgba(255, 255, 255, 0.1);
+        color: #ffffff;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 4px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.75rem;
+        opacity: 0.8;
+        transition: all 0.3s ease;
+        z-index: 10;
+      `;
+    } else {
+      // For regular blocks: standard positioning
+      copyButton.style.cssText = `
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        background: var(--primary-blue);
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.8rem;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      `;
+    }
 
     pre.style.position = "relative";
     pre.appendChild(copyButton);
 
-    // Show button on hover
-    pre.addEventListener("mouseenter", () => {
-      copyButton.style.opacity = "1";
-    });
+    // Show/hide button on hover
+    if (isBashBlock) {
+      // Bash blocks: show on hover, slightly more visible
+      pre.addEventListener("mouseenter", () => {
+        copyButton.style.opacity = "1";
+        copyButton.style.background = "rgba(255, 255, 255, 0.2)";
+      });
 
-    pre.addEventListener("mouseleave", () => {
-      copyButton.style.opacity = "0";
-    });
+      pre.addEventListener("mouseleave", () => {
+        copyButton.style.opacity = "0.8";
+        copyButton.style.background = "rgba(255, 255, 255, 0.1)";
+      });
+    } else {
+      // Regular blocks: fade in/out on hover
+      pre.addEventListener("mouseenter", () => {
+        copyButton.style.opacity = "1";
+      });
+
+      pre.addEventListener("mouseleave", () => {
+        copyButton.style.opacity = "0";
+      });
+    }
 
     // Copy functionality
     copyButton.addEventListener("click", async () => {
@@ -162,10 +234,19 @@ function enhanceKeyboardNavigation() {
 
 // Initialize all enhancements when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
-  createProgressBar();
-  addCopyButtons();
-  createAlertBoxes();
-  enhanceKeyboardNavigation();
+  console.log("🚀 DOM loaded, initializing enhancements...");
+
+  // Wait a bit to let other scripts initialize first
+  setTimeout(() => {
+    console.log("🔧 Starting enhancements after delay...");
+    createProgressBar();
+    addCopyButtons();
+    createAlertBoxes();
+    enhanceKeyboardNavigation();
+    enhanceNavigationButtons();
+
+    console.log("🎨 CEH Study Guide enhanced styling loaded!");
+  }, 100);
 
   // Add smooth scrolling to all links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -181,8 +262,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Enhance navigation buttons
-  enhanceNavigationButtons();
-
-  console.log("🎨 CEH Study Guide enhanced styling loaded!");
+  // Set up a watcher to prevent duplicate copy buttons
+  setInterval(() => {
+    const pres = document.querySelectorAll("pre");
+    pres.forEach(pre => {
+      const buttons = pre.querySelectorAll(".copy-button");
+      if (buttons.length > 1) {
+        console.log(
+          `🚨 Found ${buttons.length} copy buttons in one block, removing duplicates`
+        );
+        for (let i = 1; i < buttons.length; i++) {
+          buttons[i].remove();
+        }
+      }
+    });
+  }, 1000);
 });
