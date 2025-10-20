@@ -1,0 +1,70 @@
+# mdBook build output - docs will be built by GitHub Actions
+/docs/
+
+# Rust/Cargo (if used)
+target/
+Cargo.lock
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor files
+.vscode/settings.json
+.vscode/launch.json
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.temp
+
+# Node modules (if using npm for any tooling)
+node_modules/
+
+# Backup files
+*.bak
+*.orig
+
+# IDE files
+*.iml
+*.ipr
+*.iws
+
+# Log files
+*.log
+
+# Legacy HTML files from old structure - keeping as reference
+/old_html_files/
+cehv13.html
+introduction.html
+footprinting.html
+scanning.html
+css/
+fonts/
+FontAwesome/
+scripts/
+styles/
+refpages/
+404.html
+ayu-highlight.css
+book.js
+clipboard.min.js
+cover.html
+elasticlunr.min.js
+highlight.css
+highlight.js
+index.html
+mark.min.js
+print.html
+searcher.js
+searchindex.js
+searchindex.json
+tomorrow-night.css
