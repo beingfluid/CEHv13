@@ -198,16 +198,50 @@ function createPracticeQuestionsContainer() {
 
 // Update page title dynamically from front matter
 function updatePageTitle() {
-  if (
-    window.pageMetadata &&
-    window.pageMetadata.module &&
-    window.pageMetadata.moduleTitle
-  ) {
-    const newTitle = `Module ${window.pageMetadata.module}: ${window.pageMetadata.moduleTitle}`;
-
-    // Update the main heading if it exists
-    const mainHeading = document.querySelector("h1");
-    if (mainHeading) {
+  const currentModule = getCurrentModule();
+  
+  if (currentModule) {
+    // Try to get title from window.pageMetadata first, then extract from front matter
+    let moduleTitle = '';
+    
+    if (window.pageMetadata && window.pageMetadata.moduleTitle) {
+      moduleTitle = window.pageMetadata.moduleTitle;
+    } else {
+      // Extract title from front matter in page content
+      const pageContent = document.body.innerText;
+      const titleMatch = pageContent.match(/title:\s*["|']?([^"|'\n]+)["|']?/i);
+      if (titleMatch) {
+        moduleTitle = titleMatch[1].trim();
+      }
+    }
+    
+    if (moduleTitle) {
+      const newTitle = `Module ${currentModule}: ${moduleTitle}`;
+      
+      // Look for existing H1 or create one
+      let mainHeading = document.querySelector('h1');
+      
+      if (!mainHeading) {
+        // Create H1 element if it doesn't exist
+        mainHeading = document.createElement('h1');
+        
+        // Insert it at the beginning of the main content
+        const mainContent = document.querySelector('main') || document.querySelector('.content') || document.body;
+        const firstChild = mainContent.firstElementChild;
+        
+        if (firstChild && firstChild.tagName === 'NAV') {
+          // Skip navigation, insert after
+          mainContent.insertBefore(mainHeading, firstChild.nextSibling);
+        } else {
+          // Insert at the very beginning
+          mainContent.insertBefore(mainHeading, firstChild);
+        }
+        
+        // Add some styling
+        mainHeading.style.marginTop = '1rem';
+        mainHeading.style.marginBottom = '1.5rem';
+      }
+      
       mainHeading.textContent = newTitle;
       console.log("Updated page title to:", newTitle);
     }
