@@ -9,13 +9,12 @@ description = "Comprehensive Certified Ethical Hacker v13 study notes and exam p
 build-dir = "docs"
 
 [output.html]
-default-theme = "navy"
+default-theme = "light"
 preferred-dark-theme = "navy"
 git-repository-url = "https://github.com/beingfluid/CEHv13"
 edit-url-template = "https://github.com/beingfluid/CEHv13/edit/main/{path}"
 no-section-label = false
-additional-css = []
-additional-js = []
+curly-quotes = false
 
 [output.html.search]
 enable = true
