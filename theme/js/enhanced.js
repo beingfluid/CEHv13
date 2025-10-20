@@ -6,45 +6,69 @@ let questionsData = [];
 // Load questions from JSON file
 async function loadQuestions() {
   try {
-    const response = await fetch('../questions.json');
+    const response = await fetch('/questions.json');
     questionsData = await response.json();
-    console.log('Questions loaded:', questionsData.length);
+    console.log("Questions loaded:", questionsData.length);
+    console.log("Questions data:", questionsData);
   } catch (error) {
-    console.error('Error loading questions:', error);
+    console.error("Error loading questions:", error);
+    // Fallback: try relative path
+    try {
+      const response2 = await fetch('../questions.json');
+      questionsData = await response2.json();
+      console.log("Questions loaded (fallback):", questionsData.length);
+    } catch (error2) {
+      console.error("Error loading questions (fallback):", error2);
+    }
   }
 }
 
 // Extract module number from current page
 function getCurrentModule() {
   const path = window.location.pathname;
+  console.log("Current path:", path);
   const match = path.match(/(\d+)-/);
-  return match ? match[1] : null;
+  const module = match ? match[1] : null;
+  console.log("Extracted module:", module);
+  return module;
 }
 
 // Generate HTML for practice questions
 function generateQuestionsHTML(moduleQuestions) {
   if (moduleQuestions.length === 0) {
-    return '<p><em>No practice questions available for this module yet.</em></p>';
+    return "<p><em>No practice questions available for this module yet.</em></p>";
   }
 
-  let html = '';
+  let html = "";
   moduleQuestions.forEach((q, index) => {
     html += `
       <div class="practice-question" data-question-index="${index}">
         <h3>Question ${index + 1}</h3>
         <p><strong>${q.question}</strong></p>
         <div class="question-options">
-          ${q.options.map((option, optIndex) => `
-            <div class="option ${option === q.correctAnswer ? 'correct' : 'incorrect'}" 
+          ${q.options
+            .map(
+              (option, optIndex) => `
+            <div class="option ${
+              option === q.correctAnswer ? "correct" : "incorrect"
+            }" 
                  data-option="${option}">
               <span class="option-indicator">
-                ${option === q.correctAnswer ? '✅' : '❌'}
+                ${option === q.correctAnswer ? "✅" : "❌"}
               </span>
-              <span class="option-text ${option === q.correctAnswer ? 'correct-text' : ''}">
-                ${option === q.correctAnswer ? `<strong>${option}</strong> <em>(Correct)</em>` : option}
+              <span class="option-text ${
+                option === q.correctAnswer ? "correct-text" : ""
+              }">
+                ${
+                  option === q.correctAnswer
+                    ? `<strong>${option}</strong> <em>(Correct)</em>`
+                    : option
+                }
               </span>
             </div>
-          `).join('')}
+          `
+            )
+            .join("")}
         </div>
       </div>
     `;
@@ -64,35 +88,47 @@ async function loadModuleQuestions() {
 
   // Filter questions for current module
   const moduleQuestions = questionsData.filter(q => q.module === currentModule);
+  console.log(`Found ${moduleQuestions.length} questions for module ${currentModule}`);
+  console.log("Module questions:", moduleQuestions);
   
   // Find practice questions section
-  const practiceHeaders = document.querySelectorAll('h2');
+  const practiceHeaders = document.querySelectorAll("h2");
   let practiceSection = null;
-  
+
   practiceHeaders.forEach(header => {
-    if (header.textContent.includes('Practice Questions')) {
+    if (header.textContent.includes("Practice Questions")) {
       practiceSection = header;
     }
   });
-  
+
   if (practiceSection) {
-    const questionsContainer = document.createElement('div');
-    questionsContainer.className = 'dynamic-questions';
+    const questionsContainer = document.createElement("div");
+    questionsContainer.className = "dynamic-questions";
     questionsContainer.innerHTML = generateQuestionsHTML(moduleQuestions);
-    
+
     // Find the comment placeholder and replace it, or insert after the header
     let nextElement = practiceSection.nextElementSibling;
-    while (nextElement && nextElement.nodeType === 8) { // Skip comment nodes
+    while (nextElement && nextElement.nodeType === 8) {
+      // Skip comment nodes
       nextElement = nextElement.nextElementSibling;
     }
-    
-    if (nextElement && nextElement.textContent && nextElement.textContent.includes('Questions will be loaded dynamically')) {
+
+    if (
+      nextElement &&
+      nextElement.textContent &&
+      nextElement.textContent.includes("Questions will be loaded dynamically")
+    ) {
       nextElement.replaceWith(questionsContainer);
     } else {
-      practiceSection.parentNode.insertBefore(questionsContainer, practiceSection.nextSibling);
+      practiceSection.parentNode.insertBefore(
+        questionsContainer,
+        practiceSection.nextSibling
+      );
     }
-    
-    console.log(`Loaded ${moduleQuestions.length} questions for module ${currentModule}`);
+
+    console.log(
+      `Loaded ${moduleQuestions.length} questions for module ${currentModule}`
+    );
   }
 }
 

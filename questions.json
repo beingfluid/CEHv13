@@ -1,12 +1,7 @@
 [
   {
     "question": "Which of the following Nmap options is used to control the timing and speed of a scan?",
-    "options": [
-      "nmap -T",
-      "nmap -sV",
-      "nmap -A",
-      "nmap -O"
-    ],
+    "options": ["nmap -T", "nmap -sV", "nmap -A", "nmap -O"],
     "correctAnswer": "nmap -T",
     "module": "3"
   }
