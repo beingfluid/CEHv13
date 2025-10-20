@@ -6,7 +6,7 @@ let questionsData = [];
 // Load questions from JSON file
 async function loadQuestions() {
   try {
-    const response = await fetch('/questions.json');
+    const response = await fetch("/questions.json");
     questionsData = await response.json();
     console.log("Questions loaded:", questionsData.length);
     console.log("Questions data:", questionsData);
@@ -14,7 +14,7 @@ async function loadQuestions() {
     console.error("Error loading questions:", error);
     // Fallback: try relative path
     try {
-      const response2 = await fetch('../questions.json');
+      const response2 = await fetch("../questions.json");
       questionsData = await response2.json();
       console.log("Questions loaded (fallback):", questionsData.length);
     } catch (error2) {
@@ -23,13 +23,43 @@ async function loadQuestions() {
   }
 }
 
-// Extract module number from current page
+// Extract module number from various sources
 function getCurrentModule() {
+  // First try to get module from data attribute in practice questions container
+  const practiceContainer = document.getElementById(
+    "practice-questions-container"
+  );
+  if (practiceContainer && practiceContainer.dataset.module) {
+    const module = practiceContainer.dataset.module;
+    console.log("Module from data attribute:", module);
+    return module;
+  }
+
+  // Try to get module from page metadata
+  const metaTags = document.querySelectorAll("meta");
+  for (let meta of metaTags) {
+    if (meta.getAttribute("name") === "module") {
+      const module = meta.getAttribute("content");
+      console.log("Module from metadata:", module);
+      return module;
+    }
+  }
+
+  // Try to find module in page content (look for front matter pattern)
+  const pageContent = document.body.innerText;
+  const moduleMatch = pageContent.match(/module:\s*["|']?(\d+)["|']?/i);
+  if (moduleMatch) {
+    const module = moduleMatch[1];
+    console.log("Module from content:", module);
+    return module;
+  }
+
+  // Fallback to URL parsing
   const path = window.location.pathname;
   console.log("Current path:", path);
-  const match = path.match(/(\d+)-/);
-  const module = match ? match[1] : null;
-  console.log("Extracted module:", module);
+  const urlMatch = path.match(/(\d+)-/);
+  const module = urlMatch ? urlMatch[1] : null;
+  console.log("Module from URL:", module);
   return module;
 }
 
@@ -79,56 +109,78 @@ function generateQuestionsHTML(moduleQuestions) {
 // Load and display questions for current module
 async function loadModuleQuestions() {
   const currentModule = getCurrentModule();
-  if (!currentModule) return;
+  console.log("Detected current module:", currentModule);
+
+  if (!currentModule) {
+    console.log("No module detected, skipping question loading");
+    return;
+  }
 
   // Wait for questions to load if not already loaded
   if (questionsData.length === 0) {
+    console.log("Questions not loaded yet, loading now...");
     await loadQuestions();
   }
 
   // Filter questions for current module
   const moduleQuestions = questionsData.filter(q => q.module === currentModule);
-  console.log(`Found ${moduleQuestions.length} questions for module ${currentModule}`);
-  console.log("Module questions:", moduleQuestions);
-  
-  // Find practice questions section
-  const practiceHeaders = document.querySelectorAll("h2");
-  let practiceSection = null;
+  console.log(
+    `Found ${moduleQuestions.length} questions for module ${currentModule}`
+  );
+  console.log("Available questions:", questionsData);
+  console.log("Filtered module questions:", moduleQuestions);
 
-  practiceHeaders.forEach(header => {
-    if (header.textContent.includes("Practice Questions")) {
-      practiceSection = header;
-    }
-  });
+  // Find practice questions container
+  const practiceContainer = document.getElementById(
+    "practice-questions-container"
+  );
 
-  if (practiceSection) {
+  if (practiceContainer) {
+    console.log("Found practice questions container");
+
+    // Clear existing content
+    practiceContainer.innerHTML = "";
+
     const questionsContainer = document.createElement("div");
     questionsContainer.className = "dynamic-questions";
     questionsContainer.innerHTML = generateQuestionsHTML(moduleQuestions);
 
-    // Find the comment placeholder and replace it, or insert after the header
-    let nextElement = practiceSection.nextElementSibling;
-    while (nextElement && nextElement.nodeType === 8) {
-      // Skip comment nodes
-      nextElement = nextElement.nextElementSibling;
-    }
+    // Insert questions into the container
+    practiceContainer.appendChild(questionsContainer);
 
-    if (
-      nextElement &&
-      nextElement.textContent &&
-      nextElement.textContent.includes("Questions will be loaded dynamically")
-    ) {
-      nextElement.replaceWith(questionsContainer);
-    } else {
+    console.log(
+      `✅ Successfully loaded ${moduleQuestions.length} questions for module ${currentModule}`
+    );
+  } else {
+    console.log("❌ Practice Questions container not found");
+
+    // Fallback: Try to find by header
+    const practiceHeaders = document.querySelectorAll("h2");
+    let practiceSection = null;
+
+    practiceHeaders.forEach(header => {
+      if (header.textContent.includes("Practice Questions")) {
+        practiceSection = header;
+      }
+    });
+
+    if (practiceSection) {
+      console.log("Found practice questions section via fallback");
+
+      const questionsContainer = document.createElement("div");
+      questionsContainer.className = "dynamic-questions";
+      questionsContainer.innerHTML = generateQuestionsHTML(moduleQuestions);
+
+      // Insert after the practice questions header
       practiceSection.parentNode.insertBefore(
         questionsContainer,
         practiceSection.nextSibling
       );
-    }
 
-    console.log(
-      `Loaded ${moduleQuestions.length} questions for module ${currentModule}`
-    );
+      console.log(
+        `✅ Successfully loaded ${moduleQuestions.length} questions for module ${currentModule} (fallback)`
+      );
+    }
   }
 }
 

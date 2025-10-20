@@ -1,3 +1,8 @@
+---
+module: "3"
+title: "Scanning Networks"
+---
+
 # Module 3: Scanning Networks
 
 ## Course Outline
@@ -205,4 +210,6 @@ nmap -6 -sS 2001:db8::1
 
 ## Practice Questions
 
+<div id="practice-questions-container" data-module="3">
 <!-- Questions will be loaded dynamically from questions.json -->
+</div>
