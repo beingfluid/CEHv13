@@ -20,6 +20,7 @@ The CEH v13 certification is a globally recognized credential that validates you
 This guide is organized into 19 comprehensive modules, each covering specific domains of ethical hacking:
 
 ### Core Modules
+
 1. **Introduction to Ethical Hacking** - Foundation concepts and methodologies
 2. **Footprinting and Reconnaissance** - Information gathering techniques
 3. **Scanning Networks** - Active and passive reconnaissance
@@ -27,6 +28,7 @@ This guide is organized into 19 comprehensive modules, each covering specific do
 5. **Vulnerability Analysis** - Identifying security weaknesses
 
 ### Attack Techniques
+
 6. **System Hacking** - Gaining access to systems
 7. **Malware Threats** - Understanding and analyzing malware
 8. **Sniffing** - Network traffic analysis
@@ -34,6 +36,7 @@ This guide is organized into 19 comprehensive modules, each covering specific do
 10. **Denial-of-Service** - Availability attacks
 
 ### Advanced Topics
+
 11. **Session Hijacking** - Session-based attacks
 12. **Evading IDS, Firewalls, and Honeypots** - Evasion techniques
 13. **Hacking Web Applications** - Web security testing
@@ -41,6 +44,7 @@ This guide is organized into 19 comprehensive modules, each covering specific do
 15. **Hacking Wireless Networks** - Wireless security assessment
 
 ### Emerging Technologies
+
 16. **Hacking Mobile Platforms** - Mobile security testing
 17. **IoT and OT Hacking** - Internet of Things and Operational Technology
 18. **Cloud Computing** - Cloud security assessment
@@ -49,18 +53,21 @@ This guide is organized into 19 comprehensive modules, each covering specific do
 ## How to Use This Guide
 
 ### Study Approach
+
 - **Sequential Learning**: Follow the modules in order as they build upon each other
 - **Hands-on Practice**: Set up a lab environment to practice techniques
 - **Review Questions**: Complete the review questions at the end of each module
 - **Take Notes**: Customize your learning with additional notes and observations
 
 ### Lab Setup Recommendations
+
 - **Virtualization Platform**: VMware Workstation, VirtualBox, or Hyper-V
 - **Kali Linux**: Primary penetration testing distribution
 - **Vulnerable Applications**: DVWA, WebGoat, Metasploitable
 - **Windows Environment**: Windows Server and desktop versions for practice
 
 ### Study Timeline
+
 - **Beginner**: 3-4 months of dedicated study (10-15 hours/week)
 - **Intermediate**: 2-3 months with existing security background
 - **Advanced**: 1-2 months for experienced professionals
@@ -79,10 +86,12 @@ By completing this study guide, you will be able to:
 ## Additional Resources
 
 ### Official Resources
+
 - [EC-Council Official CEH Page](https://www.eccouncil.org/programs/certified-ethical-hacker-ceh/)
 - [CEH Exam Blueprint](https://cert.eccouncil.org/images/doc/CEH-Exam-Blueprint-v3.0.pdf)
 
 ### Practice Materials
+
 - Official EC-Council practice tests
 - Hands-on lab environments
 - Virtual machine setups

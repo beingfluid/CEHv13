@@ -27,12 +27,14 @@ Network scanning is the process of identifying active hosts, open ports, and ser
 ### Host Discovery Scanning
 
 **Techniques:**
+
 - ICMP Echo Requests (Ping)
 - TCP SYN/ACK Scanning
 - UDP Scanning
 - ARP Scanning (Local network)
 
 **Tools:**
+
 - ping
 - fping
 - hping3
@@ -41,6 +43,7 @@ Network scanning is the process of identifying active hosts, open ports, and ser
 ### Port Scanning
 
 **TCP Port Scanning:**
+
 - **TCP Connect Scan:** Complete three-way handshake
 - **TCP SYN Scan:** Half-open scanning
 - **TCP FIN Scan:** Stealth scanning technique
@@ -48,6 +51,7 @@ Network scanning is the process of identifying active hosts, open ports, and ser
 - **TCP Null Scan:** No flags set
 
 **UDP Port Scanning:**
+
 - More challenging than TCP
 - Relies on ICMP unreachable messages
 - Slower than TCP scanning
@@ -55,11 +59,13 @@ Network scanning is the process of identifying active hosts, open ports, and ser
 ### Service Detection
 
 **Banner Grabbing:**
+
 - Application layer information gathering
 - Service version identification
 - Operating system fingerprinting
 
 **Service Enumeration:**
+
 - NetBios enumeration
 - SNMP enumeration
 - LDAP enumeration
@@ -107,6 +113,7 @@ nmap -p 1-1000 target_ip
 ### Nmap Scripting Engine (NSE)
 
 **Script Categories:**
+
 - **auth:** Authentication scripts
 - **broadcast:** Network broadcast discovery
 - **brute:** Brute force attacks
@@ -123,6 +130,7 @@ nmap -p 1-1000 target_ip
 - **vuln:** Vulnerability detection
 
 **NSE Usage:**
+
 ```bash
 # Run default scripts
 nmap -sC target_ip
@@ -142,12 +150,14 @@ nmap --script-updatedb
 ### Masscan
 
 **Features:**
+
 - High-speed port scanner
 - Can scan millions of ports per second
 - Asynchronous transmission
 - Custom packet crafting
 
 **Usage:**
+
 ```bash
 # Basic scan
 masscan -p1-1000 192.168.1.0/24
@@ -159,6 +169,7 @@ masscan -p80,443 --rate=10000 192.168.1.0/24
 ### Unicornscan
 
 **Features:**
+
 - Asynchronous stateless TCP scanning
 - UDP protocol scanning
 - Active/passive remote OS identification
@@ -167,6 +178,7 @@ masscan -p80,443 --rate=10000 192.168.1.0/24
 ### Zmap
 
 **Features:**
+
 - Internet-wide network scanner
 - Single port scanning across entire IPv4 space
 - High-speed scanning capabilities
@@ -177,12 +189,14 @@ masscan -p80,443 --rate=10000 192.168.1.0/24
 ### Stealth Scanning
 
 **Techniques:**
+
 - **Fragmented Packets:** Split packets to evade detection
 - **Source Port Manipulation:** Use common source ports (53, 20)
 - **Decoy Scanning:** Use multiple fake source IPs
 - **Timing Manipulation:** Slow scanning to avoid detection
 
 **Nmap Stealth Options:**
+
 ```bash
 # Fragment packets
 nmap -f target_ip
@@ -200,12 +214,14 @@ nmap -T1 target_ip
 ### Firewall and IDS Evasion
 
 **Techniques:**
+
 - **Packet Fragmentation**
 - **Source Routing**
 - **Proxy Servers**
 - **Anonymizers**
 
 **Nmap Evasion:**
+
 ```bash
 # MTU specification
 nmap --mtu 24 target_ip
@@ -223,12 +239,14 @@ nmap --spoof-mac Dell target_ip
 ### IPv6 Scanning
 
 **Challenges:**
+
 - Larger address space
 - Different protocols (ICMPv6)
 - Link-local addresses
 - Neighbor discovery
 
 **Nmap IPv6:**
+
 ```bash
 # IPv6 host discovery
 nmap -6 -sn 2001:db8::/32
@@ -242,12 +260,14 @@ nmap -6 -sS 2001:db8::1
 ### Automated Vulnerability Scanners
 
 **Commercial Tools:**
+
 - Nessus
 - Qualys VMDR
 - Rapid7 Nexpose
 - Greenbone (OpenVAS)
 
 **Open Source Tools:**
+
 - OpenVAS
 - Nuclei
 - Nikto (Web vulnerability)
@@ -255,6 +275,7 @@ nmap -6 -sS 2001:db8::1
 ### Manual Vulnerability Assessment
 
 **Process:**
+
 1. Service identification
 2. Version enumeration
 3. Vulnerability database lookup
@@ -266,6 +287,7 @@ nmap -6 -sS 2001:db8::1
 ### Mobile Device Scanning
 
 **Considerations:**
+
 - Network connectivity changes
 - Battery life impact
 - Detection avoidance
@@ -274,12 +296,14 @@ nmap -6 -sS 2001:db8::1
 ### Wireless Network Scanning
 
 **Tools:**
+
 - airodump-ng
 - Kismet
 - InSSIDer
 - Wigle WiFi
 
 **Information Gathered:**
+
 - Access point names (SSIDs)
 - MAC addresses (BSSIDs)
 - Signal strength
@@ -291,12 +315,14 @@ nmap -6 -sS 2001:db8::1
 ### Network-Level Protections
 
 **Firewalls:**
+
 - Packet filtering
 - Stateful inspection
 - Application layer filtering
 - Rate limiting
 
 **Intrusion Detection Systems (IDS):**
+
 - Signature-based detection
 - Anomaly-based detection
 - Network behavior analysis
@@ -305,12 +331,14 @@ nmap -6 -sS 2001:db8::1
 ### Host-Level Protections
 
 **Port Security:**
+
 - Close unnecessary ports
 - Service hardening
 - Regular updates
 - Access controls
 
 **Monitoring:**
+
 - Log analysis
 - Network monitoring
 - Behavior baselines
@@ -319,12 +347,14 @@ nmap -6 -sS 2001:db8::1
 ### Detection and Response
 
 **Scan Detection:**
+
 - Multiple connection attempts
 - Port sweep patterns
 - Unusual traffic patterns
 - Geographic anomalies
 
 **Response Strategies:**
+
 - Automated blocking
 - Rate limiting
 - Honeypots/Honeynets

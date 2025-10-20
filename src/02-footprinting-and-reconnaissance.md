@@ -42,6 +42,7 @@ Footprinting is the technique of gathering information about a target system or 
 ### Search Engine Footprinting
 
 **Google Dorking (Advanced Google Search):**
+
 - `site:` - Search specific websites
 - `filetype:` - Search for specific file types
 - `intitle:` - Search page titles
@@ -49,6 +50,7 @@ Footprinting is the technique of gathering information about a target system or 
 - `cache:` - View cached versions
 
 **Examples:**
+
 ```
 site:example.com filetype:pdf
 intitle:"index of" site:example.com
@@ -58,12 +60,14 @@ inurl:admin site:example.com
 ### Social Media Footprinting
 
 **Platforms to investigate:**
+
 - LinkedIn (employee information)
 - Facebook (personal details, relationships)
 - Twitter (real-time updates, opinions)
 - Instagram (location data, activities)
 
 **Information to gather:**
+
 - Employee names and roles
 - Company structure
 - Technologies used
@@ -72,11 +76,13 @@ inurl:admin site:example.com
 ### Website Footprinting
 
 **Web crawling tools:**
+
 - HTTrack
 - Wget
 - Scrapy
 
 **Information to extract:**
+
 - Directory structure
 - File names and extensions
 - Comments in source code
@@ -86,12 +92,14 @@ inurl:admin site:example.com
 ### Email Footprinting
 
 **Techniques:**
+
 - Email header analysis
 - Email tracking
 - Email harvesting from websites
 - Social engineering via email
 
 **Tools:**
+
 - theHarvester
 - Maltego
 - EmailTracker
@@ -99,6 +107,7 @@ inurl:admin site:example.com
 ### Whois Footprinting
 
 **Information available:**
+
 - Domain registration details
 - Administrative contacts
 - Technical contacts
@@ -106,6 +115,7 @@ inurl:admin site:example.com
 - Registration and expiry dates
 
 **Tools:**
+
 - whois command
 - Online whois databases
 - DomainTools
@@ -113,6 +123,7 @@ inurl:admin site:example.com
 ### DNS Footprinting
 
 **DNS Record Types:**
+
 - **A Records:** IP addresses
 - **AAAA Records:** IPv6 addresses
 - **MX Records:** Mail servers
@@ -121,6 +132,7 @@ inurl:admin site:example.com
 - **TXT Records:** Text information
 
 **DNS Enumeration Tools:**
+
 - nslookup
 - dig
 - host
@@ -130,6 +142,7 @@ inurl:admin site:example.com
 ### Network Range Information
 
 **Regional Internet Registries (RIRs):**
+
 - ARIN (North America)
 - RIPE (Europe, Middle East, Central Asia)
 - APNIC (Asia Pacific)
@@ -141,21 +154,25 @@ inurl:admin site:example.com
 ### Automated Tools
 
 **Maltego:**
+
 - Visual link analysis
 - OSINT data gathering
 - Relationship mapping
 
 **theHarvester:**
+
 - Email harvesting
 - Subdomain discovery
 - Virtual host detection
 
 **Recon-ng:**
+
 - Modular reconnaissance framework
 - Database-driven approach
 - Automated report generation
 
 **Shodan:**
+
 - Internet-connected device search engine
 - Banner information
 - Vulnerability data
@@ -163,11 +180,13 @@ inurl:admin site:example.com
 ### Manual Techniques
 
 **Google Hacking:**
+
 - Advanced search operators
 - Cached pages analysis
 - Image metadata extraction
 
 **Social Engineering:**
+
 - Phone calls to employees
 - Physical site visits
 - Dumpster diving
@@ -177,12 +196,14 @@ inurl:admin site:example.com
 ### Metadata Extraction
 
 **File metadata contains:**
+
 - Author information
 - Creation/modification dates
 - Software versions
 - System information
 
 **Tools:**
+
 - ExifTool
 - FOCA (Fingerprinting Organizations with Collected Archives)
 - Metagoofil
@@ -190,6 +211,7 @@ inurl:admin site:example.com
 ### Competitive Intelligence
 
 **Sources:**
+
 - Company websites
 - Press releases
 - Job postings
@@ -199,6 +221,7 @@ inurl:admin site:example.com
 ### Physical Security Assessment
 
 **Areas to examine:**
+
 - Building security
 - Entry points
 - Security cameras
@@ -217,18 +240,21 @@ inurl:admin site:example.com
 ### Technical Measures
 
 **Web Security:**
+
 - Remove sensitive information from websites
 - Implement robots.txt properly
 - Use meta tags to prevent indexing
 - Regular security audits
 
 **DNS Security:**
+
 - Limit DNS zone transfers
 - Use split DNS architecture
 - Monitor DNS queries
 - Implement DNS security extensions (DNSSEC)
 
 **Network Security:**
+
 - Firewall configuration
 - Intrusion detection systems
 - Network monitoring
@@ -237,6 +263,7 @@ inurl:admin site:example.com
 ### Privacy Protection
 
 **Personal Information:**
+
 - Review social media privacy settings
 - Limit personal information disclosure
 - Use separate personal/professional accounts

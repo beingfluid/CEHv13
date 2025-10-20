@@ -11,13 +11,15 @@ A comprehensive study guide for the **Certified Ethical Hacker version 13 (CEH v
 This study guide covers all 19 modules of the CEH v13 certification curriculum:
 
 ### Core Modules
+
 1. **Introduction to Ethical Hacking** ✅
-2. **Footprinting and Reconnaissance** ✅  
+2. **Footprinting and Reconnaissance** ✅
 3. **Scanning Networks** ✅
 4. **Enumeration** 🚧
 5. **Vulnerability Analysis** 🚧
 
 ### Attack Techniques
+
 6. **System Hacking** 🚧
 7. **Malware Threats** 🚧
 8. **Sniffing** 🚧
@@ -25,6 +27,7 @@ This study guide covers all 19 modules of the CEH v13 certification curriculum:
 10. **Denial-of-Service** 🚧
 
 ### Advanced Topics
+
 11. **Session Hijacking** 🚧
 12. **Evading IDS, Firewalls, and Honeypots** 🚧
 13. **Hacking Web Applications** 🚧
@@ -32,6 +35,7 @@ This study guide covers all 19 modules of the CEH v13 certification curriculum:
 15. **Hacking Wireless Networks** 🚧
 
 ### Emerging Technologies
+
 16. **Hacking Mobile Platforms** 🚧
 17. **IoT and OT Hacking** 🚧
 18. **Cloud Computing** 🚧
@@ -56,15 +60,17 @@ This study guide is built using [mdBook](https://rust-lang.github.io/mdBook/), a
 To contribute or run locally:
 
 1. **Install mdBook**:
+
    ```bash
    # Via Homebrew (macOS)
    brew install mdbook
-   
+
    # Via Cargo (Rust)
    cargo install mdbook
    ```
 
 2. **Clone and serve**:
+
    ```bash
    git clone https://github.com/beingfluid/CEHv13.git
    cd CEHv13
@@ -95,12 +101,14 @@ To contribute or run locally:
 Contributions are welcome! Here's how you can help:
 
 ### 📝 Content Contributions
+
 - Add content to modules marked as "In Development"
 - Improve existing content with better explanations
 - Add practical examples and code snippets
 - Create practice questions and exercises
 
 ### 🐛 Issues and Improvements
+
 - Report errors or typos
 - Suggest better explanations
 - Request additional topics
@@ -127,16 +135,19 @@ Contributions are welcome! Here's how you can help:
 ## 📖 Study Resources
 
 ### 🎓 Official Resources
+
 - [EC-Council CEH Certification](https://www.eccouncil.org/programs/certified-ethical-hacker-ceh/)
 - [Official CEH Exam Blueprint](https://cert.eccouncil.org/images/doc/CEH-Exam-Blueprint-v3.0.pdf)
 
 ### 🛠️ Lab Setup
+
 - **Kali Linux**: Primary penetration testing distribution
 - **Vulnerable VMs**: Metasploitable, DVWA, WebGoat
 - **Virtualization**: VMware, VirtualBox, or Hyper-V
 - **Windows Labs**: Windows 10/11 and Server editions
 
 ### 📚 Additional Study Materials
+
 - Hands-on lab practice
 - EC-Council official courseware
 - Practice examinations
