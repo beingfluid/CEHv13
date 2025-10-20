@@ -1,135 +1,677 @@
 /* Enhanced Previous/Next Navigation */
 
-/* Add visible text labels to navigation */
-.nav-wrapper .mobile-nav-chapters::after,
-.nav-wide-wrapper .nav-chapters::after {
-    font-size: 0.9em;
-    margin-left: 8px;
-    font-weight: 500;
-}
-
-.nav-wrapper .mobile-nav-chapters.previous::after,
-.nav-wide-wrapper .nav-chapters.previous::after {
-    content: "Previous";
-}
-
-.nav-wrapper .mobile-nav-chapters.next::after,
-.nav-wide-wrapper .nav-chapters.next::after {
-    content: "Next";
-}
-
 /* Style the navigation wrapper */
-.nav-wrapper, .nav-wide-wrapper {
-    margin-top: 3rem;
-    padding: 1.5rem 0;
-    border-top: 2px solid var(--sidebar-bg);
-    background: rgba(var(--sidebar-bg), 0.1);
+.nav-wrapper,
+.nav-wide-wrapper {
+  margin-top: 3rem;
+  padding: 1.5rem 0;
+  border-top: 2px solid var(--sidebar-bg);
+  background: rgba(var(--sidebar-bg), 0.1);
+  visibility: visible !important;
+  opacity: 1 !important;
+  display: block !important;
 }
 
-/* Make navigation buttons more prominent */
-.nav-chapters, .mobile-nav-chapters {
-    display: inline-flex !important;
-    align-items: center;
-    padding: 12px 20px;
-    background: var(--theme-hover);
-    border: 2px solid var(--theme-popup-border);
-    border-radius: 8px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    margin: 8px;
-    font-weight: 600;
-    color: var(--fg) !important;
-    min-width: 120px;
-    justify-content: center;
+/* Completely override default mdBook navigation styles */
+.nav-chapters,
+.mobile-nav-chapters {
+  /* Reset all default positioning */
+  position: relative !important;
+  top: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+  right: auto !important;
+  float: none !important;
+
+  /* Apply our custom styling */
+  display: inline-flex !important;
+  align-items: center;
+  padding: 12px 20px;
+  background: var(--theme-hover);
+  border: 2px solid var(--theme-popup-border);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin: 8px;
+  font-weight: 600;
+  color: var(--fg) !important;
+  min-width: 140px;
+  justify-content: center;
+  visibility: visible !important;
+  opacity: 1 !important;
+
+  /* Override default font size */
+  font-size: 0.9em !important;
+
+  /* Ensure no fixed positioning */
+  max-width: none !important;
+  min-width: 120px !important;
+  flex-direction: row !important;
 }
 
-.nav-chapters:hover, .mobile-nav-chapters:hover {
-    background: var(--sidebar-active);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+.nav-chapters:hover,
+.mobile-nav-chapters:hover {
+  background: var(--sidebar-active);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Position navigation properly */
+/* Position navigation properly - centered at bottom */
 .nav-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 1.5rem 1rem;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center;
+  width: 100%;
+  padding: 1.5rem 1rem;
+  gap: 2rem;
+  /* Reset any default positioning */
+  position: relative !important;
+  top: auto !important;
+  bottom: auto !important;
 }
 
 .nav-wide-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 1.5rem 1rem;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+  gap: 2rem;
+  /* Reset any default positioning */
+  position: relative !important;
+  top: auto !important;
+  bottom: auto !important;
 }
 
-/* Icon styling */
-.nav-chapters i, .mobile-nav-chapters i {
-    font-size: 1.3em;
-    margin-right: 8px;
+/* Override the clear div that might interfere */
+.nav-wrapper div[style*="clear"] {
+  display: none !important;
 }
 
-/* Previous button alignment */
-.nav-chapters.previous, .mobile-nav-chapters.previous {
-    margin-right: auto;
+/* Hide default fixed navigation */
+.nav-chapters.previous:not(.mobile-nav-chapters),
+.nav-chapters.next:not(.mobile-nav-chapters) {
+  position: static !important;
 }
 
-/* Next button alignment */
-.nav-chapters.next, .mobile-nav-chapters.next {
-    margin-left: auto;
-}
-
-/* Add some space if only one navigation button exists */
-.nav-chapters:only-child, .mobile-nav-chapters:only-child {
-    margin: 8px auto;
-}
-
-/* Responsive behavior */
+/* Ensure mobile and desktop nav don't conflict */
 @media (max-width: 768px) {
-    .nav-wide-wrapper {
-        display: none;
-    }
-    
-    .nav-chapters, .mobile-nav-chapters {
-        padding: 10px 16px;
-        font-size: 0.9em;
-    }
+  .nav-wide-wrapper {
+    display: none !important;
+  }
+  .nav-wrapper {
+    display: flex !important;
+  }
 }
 
 @media (min-width: 769px) {
-    .nav-wrapper {
-        display: none;
-    }
+  .nav-wrapper {
+    display: none !important;
+  }
+  .nav-wide-wrapper {
+    display: flex !important;
+  }
+}
+
+/* Icon styling */
+.nav-chapters i,
+.mobile-nav-chapters i {
+  font-size: 1.3em;
+  color: var(--fg) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: inline-block;
+}
+
+/* Styling for JavaScript-added navigation text */
+.nav-chapters .nav-text,
+.mobile-nav-chapters .nav-text {
+  color: var(--fg) !important;
+  font-weight: 600;
+  font-size: 0.9em;
+}
+
+/* Ensure FontAwesome icons are visible */
+.nav-chapters .fa,
+.mobile-nav-chapters .fa {
+  display: inline-block !important;
+  font-family: "FontAwesome" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  line-height: 1 !important;
+  color: var(--fg) !important;
+}
+
+/* Specific styling for navigation arrows */
+.nav-chapters.previous .fa-angle-left,
+.mobile-nav-chapters.previous .fa-angle-left,
+.nav-chapters.next .fa-angle-right,
+.mobile-nav-chapters.next .fa-angle-right {
+  display: inline-block !important;
+  color: var(--fg) !important;
+  font-size: 1.2em !important;
+}
+
+/* Center single navigation button if only one exists */
+.nav-chapters:only-child,
+.mobile-nav-chapters:only-child {
+  margin: 8px auto;
+}
+
+/* Ensure navigation buttons are always visible */
+.nav-chapters.previous,
+.nav-chapters.next,
+.mobile-nav-chapters.previous,
+.mobile-nav-chapters.next {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  color: var(--fg) !important;
+  background: var(--theme-hover) !important;
+  border: 2px solid var(--theme-popup-border) !important;
 }
 
 /* Light theme adjustments */
-.light .nav-chapters, .light .mobile-nav-chapters {
-    background: #f4f4f4;
-    border-color: #d3d3d3;
-    color: #333 !important;
+.light .nav-chapters,
+.light .mobile-nav-chapters {
+  background: #f4f4f4;
+  border-color: #d3d3d3;
+  color: #333 !important;
 }
 
-.light .nav-chapters:hover, .light .mobile-nav-chapters:hover {
-    background: #e8e8e8;
+.light .nav-chapters:hover,
+.light .mobile-nav-chapters:hover {
+  background: #e8e8e8;
 }
 
 /* Dark theme adjustments */
-.navy .nav-chapters, .navy .mobile-nav-chapters,
-.coal .nav-chapters, .coal .mobile-nav-chapters,
-.ayu .nav-chapters, .ayu .mobile-nav-chapters {
-    background: #3b4252;
-    border-color: #5e81ac;
-    color: #d8dee9 !important;
+.navy .nav-chapters,
+.navy .mobile-nav-chapters,
+.coal .nav-chapters,
+.coal .mobile-nav-chapters,
+.ayu .nav-chapters,
+.ayu .mobile-nav-chapters {
+  background: #3b4252;
+  border-color: #5e81ac;
+  color: #d8dee9 !important;
 }
 
-.navy .nav-chapters:hover, .navy .mobile-nav-chapters:hover,
-.coal .nav-chapters:hover, .coal .mobile-nav-chapters:hover,
-.ayu .nav-chapters:hover, .ayu .mobile-nav-chapters:hover {
-    background: #5e81ac;
-    color: #eceff4 !important;
+.navy .nav-chapters:hover,
+.navy .mobile-nav-chapters:hover,
+.coal .nav-chapters:hover,
+.coal .mobile-nav-chapters:hover,
+.ayu .nav-chapters:hover,
+.ayu .mobile-nav-chapters:hover {
+  background: #5e81ac;
+  color: #eceff4 !important;
+}
+
+/* ===============================================
+   ENHANCED COLORFUL STYLING
+   =============================================== */
+
+/* Custom Color Palette */
+:root {
+  --primary-blue: #2563eb;
+  --primary-blue-dark: #1d4ed8;
+  --success-green: #059669;
+  --warning-orange: #d97706;
+  --danger-red: #dc2626;
+  --info-cyan: #0891b2;
+  --purple: #7c3aed;
+  --gradient-start: #3b82f6;
+  --gradient-end: #8b5cf6;
+}
+
+/* Enhanced Code Blocks - General Styling */
+.hljs {
+  background: #f8f9fa !important;
+  color: #495057 !important;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow-x: auto;
+  font-family: "Fira Code", "Monaco", "Cascadia Code", "Roboto Mono", monospace !important;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+/* Terminal-like Styling - Only for Bash Code Blocks */
+pre code.language-bash,
+pre.language-bash .hljs,
+.language-bash .hljs {
+  background: #2d3748 !important;
+  color: #e2e8f0 !important;
+  border: 1px solid #4a5568;
+  border-radius: 8px;
+  padding: 4rem 1.5rem 1.5rem 1.5rem !important;
+  margin: 1.5rem 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+  font-size: 1.1rem !important;
+  line-height: 1.5 !important;
+}
+
+/* Terminal-style header bar - Only for Bash */
+pre code.language-bash::before,
+pre.language-bash::before,
+pre.language-bash .hljs::before,
+.language-bash .hljs::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 30px !important;
+  background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%) !important;
+  border-radius: 8px 8px 0 0 !important;
+  border-bottom: 1px solid #4a5568 !important;
+  display: block !important;
+}
+
+/* Terminal dots - Only for Bash */
+pre code.language-bash::after,
+pre.language-bash::after,
+pre.language-bash .hljs::after,
+.language-bash .hljs::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 12px !important;
+  left: 12px !important;
+  width: 6px !important;
+  height: 6px !important;
+  background: #ef4444 !important;
+  border-radius: 50% !important;
+  box-shadow: 14px 0 0 #f59e0b, 28px 0 0 #10b981 !important;
+  display: block !important;
+}
+
+/* Adjust padding for terminal header - Only for Bash */
+pre code.language-bash,
+pre.language-bash code.hljs,
+.language-bash pre code.hljs {
+  padding-top: 4.5rem !important;
+}
+
+/* General Code Syntax Highlighting - Clean and Professional */
+.hljs-keyword {
+  color: #d73a49 !important; /* Red for keywords */
+  font-weight: 600;
+}
+.hljs-string {
+  color: #032f62 !important; /* Dark blue for strings */
+}
+.hljs-number {
+  color: #005cc5 !important; /* Blue for numbers */
+}
+.hljs-comment {
+  color: #6a737d !important; /* Gray for comments */
+  font-style: italic;
+}
+.hljs-function {
+  color: #6f42c1 !important; /* Purple for functions */
+}
+.hljs-variable {
+  color: #24292e !important; /* Dark gray for variables */
+}
+.hljs-type {
+  color: #d73a49 !important; /* Red for types */
+}
+.hljs-built_in {
+  color: #005cc5 !important; /* Blue for built-ins */
+}
+.hljs-literal {
+  color: #005cc5 !important; /* Blue for literals */
+}
+.hljs-title {
+  color: #6f42c1 !important; /* Purple for titles */
+  font-weight: 700;
+}
+.hljs-params {
+  color: #24292e !important; /* Dark gray for parameters */
+}
+.hljs-attr {
+  color: #6f42c1 !important; /* Purple for attributes */
+}
+.hljs-tag {
+  color: #22863a !important; /* Green for tags */
+}
+.hljs-name {
+  color: #22863a !important; /* Green for names */
+}
+.hljs-attribute {
+  color: #6f42c1 !important; /* Purple for attributes */
+}
+
+/* Terminal-style Syntax Highlighting - Only for Bash */
+.language-bash .hljs-keyword {
+  color: #f472b6 !important; /* Pink for keywords */
+  font-weight: 600;
+}
+.language-bash .hljs-string {
+  color: #34d399 !important; /* Green for strings */
+}
+.language-bash .hljs-number {
+  color: #a78bfa !important; /* Purple for numbers */
+}
+.language-bash .hljs-comment {
+  color: #9ca3af !important; /* Gray for comments */
+  font-style: italic;
+}
+.language-bash .hljs-function {
+  color: #60a5fa !important; /* Blue for functions */
+}
+.language-bash .hljs-variable {
+  color: #e5e7eb !important; /* Light gray for variables */
+}
+.language-bash .hljs-type {
+  color: #fbbf24 !important; /* Yellow for types */
+}
+.language-bash .hljs-built_in {
+  color: #f87171 !important; /* Red for built-ins */
+}
+.language-bash .hljs-literal {
+  color: #a78bfa !important; /* Purple for literals */
+}
+.language-bash .hljs-title {
+  color: #34d399 !important; /* Green for titles */
+  font-weight: 700;
+}
+.language-bash .hljs-params {
+  color: #fbbf24 !important; /* Yellow for parameters */
+}
+.language-bash .hljs-attr {
+  color: #34d399 !important; /* Green for attributes */
+}
+.language-bash .hljs-tag {
+  color: #f472b6 !important; /* Pink for tags */
+}
+.language-bash .hljs-name {
+  color: #f87171 !important; /* Red for names */
+}
+.language-bash .hljs-attribute {
+  color: #fde047 !important; /* Yellow for attributes */
+}
+
+/* Special styling for bash commands */
+.language-bash .hljs-comment::before {
+  content: "$ ";
+  color: #34d399;
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* Terminal prompt styling - Only for Bash */
+.language-bash .hljs .hljs-meta {
+  color: #34d399 !important;
+  font-weight: bold;
+}
+
+/* Enhanced Headers with Gradient */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #1e293b;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+h1::after,
+h2::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(
+    135deg,
+    var(--gradient-start),
+    var(--gradient-end)
+  );
+  border-radius: 2px;
+}
+
+/* Colorful Links */
+a {
+  color: var(--primary-blue);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+a:hover {
+  color: var(--primary-blue-dark);
+  transform: translateY(-1px);
+}
+
+a::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(
+    135deg,
+    var(--gradient-start),
+    var(--gradient-end)
+  );
+  transition: width 0.3s ease;
+}
+
+a:hover::after {
+  width: 100%;
+}
+
+/* Enhanced Blockquotes */
+blockquote {
+  border-left: 4px solid var(--primary-blue);
+  background: linear-gradient(
+    135deg,
+    rgba(37, 99, 235, 0.1),
+    rgba(139, 92, 246, 0.1)
+  );
+  padding: 1.5rem;
+  margin: 2rem 0;
+  border-radius: 0 12px 12px 0;
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.1);
+  position: relative;
+}
+
+blockquote::before {
+  content: '"';
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  font-size: 4rem;
+  color: var(--primary-blue);
+  opacity: 0.3;
+  font-family: serif;
+}
+
+/* Enhanced Tables */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 2rem 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+th {
+  background: linear-gradient(
+    135deg,
+    var(--gradient-start),
+    var(--gradient-end)
+  );
+  color: white;
+  padding: 1rem;
+  font-weight: 600;
+  text-align: left;
+}
+
+td {
+  padding: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+  transition: background-color 0.3s ease;
+}
+
+tr:hover td {
+  background-color: rgba(37, 99, 235, 0.05);
+}
+
+/* Alert/Info Boxes */
+.alert {
+  padding: 1.5rem;
+  margin: 2rem 0;
+  border-radius: 12px;
+  border-left: 4px solid;
+  position: relative;
+  font-weight: 500;
+}
+
+.alert-info {
+  background: linear-gradient(
+    135deg,
+    rgba(8, 145, 178, 0.1),
+    rgba(6, 182, 212, 0.1)
+  );
+  border-left-color: var(--info-cyan);
+  color: #155e75;
+}
+
+.alert-success {
+  background: linear-gradient(
+    135deg,
+    rgba(5, 150, 105, 0.1),
+    rgba(16, 185, 129, 0.1)
+  );
+  border-left-color: var(--success-green);
+  color: #065f46;
+}
+
+.alert-warning {
+  background: linear-gradient(
+    135deg,
+    rgba(217, 119, 6, 0.1),
+    rgba(245, 158, 11, 0.1)
+  );
+  border-left-color: var(--warning-orange);
+  color: #92400e;
+}
+
+.alert-danger {
+  background: linear-gradient(
+    135deg,
+    rgba(220, 38, 38, 0.1),
+    rgba(239, 68, 68, 0.1)
+  );
+  border-left-color: var(--danger-red);
+  color: #991b1b;
+}
+
+/* Enhanced List Items */
+ul li,
+ol li {
+  margin: 0.5rem 0;
+  padding-left: 0.5rem;
+  position: relative;
+}
+
+ul li::before {
+  content: "▸";
+  color: var(--primary-blue);
+  font-weight: bold;
+  position: absolute;
+  left: -1rem;
+}
+
+/* Enhanced Inline Code */
+code:not(.hljs) {
+  background: #f1f5f9;
+  color: #475569;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 500;
+  border: 1px solid #e2e8f0;
+  font-family: "Fira Code", "Monaco", "Cascadia Code", "Roboto Mono", monospace;
+  font-size: 0.95em;
+}
+
+/* Sidebar Enhancements */
+.sidebar {
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar .chapter-item {
+  transition: all 0.3s ease;
+}
+
+.sidebar .chapter-item:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(37, 99, 235, 0.1),
+    rgba(139, 92, 246, 0.1)
+  );
+  transform: translateX(5px);
+}
+
+/* Content Container Enhancements */
+#content main {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95),
+    rgba(248, 250, 252, 0.95)
+  );
+  border-radius: 16px;
+  padding: 2rem;
+  margin: 1rem;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+/* Scroll Progress Bar */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(
+    135deg,
+    var(--gradient-start),
+    var(--gradient-end)
+  );
+  z-index: 9999;
+  transition: width 0.3s ease;
+}
+
+/* Add some animation to the page */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#content main {
+  animation: fadeInUp 0.6s ease-out;
 }
