@@ -33,3 +33,5 @@ Learn different cloud computing concepts, such as container technologies and ser
 - Cloud Network Security
 - Cloud Security Controls
 - Cloud Security Tools
+
+## Practice Questions

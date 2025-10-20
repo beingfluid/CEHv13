@@ -40,3 +40,5 @@ Learn about the various system hacking methodologies used to discover system and
 - Covering Tracks
 - Clearing Logs
 - Track-Covering Tools
+
+## Practice Questions

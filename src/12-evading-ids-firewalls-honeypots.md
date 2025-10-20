@@ -26,3 +26,5 @@ Learn about firewall, intrusion detection system (IDS), and honeypot evasion tec
 - Types of Honeypots
 - Honeypot Tools
 - IDS/Firewall Evasion Countermeasures
+
+## Practice Questions

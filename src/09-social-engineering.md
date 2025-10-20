@@ -24,3 +24,5 @@ Learn social engineering concepts and techniques, including how to identify thef
 - Mobile-based Social Engineering Techniques
 - Social Engineering Countermeasures
 - Anti-Phishing Toolbar
+
+## Practice Questions

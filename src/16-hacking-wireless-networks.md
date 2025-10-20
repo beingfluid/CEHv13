@@ -24,3 +24,5 @@ Learn about different types of encryption, threats, hacking methodologies, hacki
 - Wi-Fi Encryption Cracking
 - Wireless Attack Countermeasures
 - Wi-Fi Security Auditing Tools
+
+## Practice Questions

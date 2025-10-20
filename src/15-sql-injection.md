@@ -18,3 +18,5 @@ Learn about SQL injection attacks and evasion techniques, the tools used to audi
 - SQL Injection Tools
 - Evasion Techniques
 - Countermeasures
+
+## Practice Questions

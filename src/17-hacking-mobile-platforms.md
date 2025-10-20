@@ -31,3 +31,5 @@ Learn mobile platform attack vectors, Android and iOS hacking, mobile device man
 - OWASP Top 10 Mobile Risks and Solutions
 - Mobile Security Guidelines
 - Mobile Security Tools
+
+## Practice Questions

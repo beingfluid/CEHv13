@@ -29,3 +29,5 @@ Learn different types of Internet of Things (IoT) and operational technology (OT
 - OT Hacking Methodology
 - OT Hacking Tools
 - OT Security Tools
+
+## Practice Questions

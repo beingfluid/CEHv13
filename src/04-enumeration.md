@@ -27,3 +27,5 @@ Learn various enumeration techniques, including Border Gateway Protocol (BGP) an
 - SMB Enumeration
 - Enumeration using AI
 - Enumeration Countermeasures
+
+## Practice Questions

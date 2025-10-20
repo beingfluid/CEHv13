@@ -26,3 +26,5 @@ Learn about packet-sniffing techniques and their uses for discovering network vu
 - Sniffing Tools
 - Sniffer Detection Techniques
 - Promiscuous Detection Tools
+
+## Practice Questions

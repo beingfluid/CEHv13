@@ -23,3 +23,5 @@ Identify vulnerabilities in web applications and learn about web application att
 - Web Application Security Testing
 - Web Application Pen Testing Tools
 - Countermeasures
+
+## Practice Questions

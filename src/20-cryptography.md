@@ -32,3 +32,5 @@ Learn about encryption algorithms, cryptography tools, Public Key Infrastructure
 - Attacks on Blockchain
 - Quantum Computing Attacks
 - Cryptanalysis Tools
+
+## Practice Questions

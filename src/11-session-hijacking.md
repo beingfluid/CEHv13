@@ -22,3 +22,5 @@ Learn the various session hijacking techniques used to discover network-level se
 - Session Hijacking Detection Methods
 - Session Hijacking Detection Tools
 - Approaches to Prevent Session Hijacking
+
+## Practice Questions

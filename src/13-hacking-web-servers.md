@@ -22,3 +22,5 @@ Identify vulnerabilities in web server infrastructures and learn about the vario
 - Web Server Security
 - Patch Management
 - Detecting Web Server Hacking Attempts
+
+## Practice Questions

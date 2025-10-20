@@ -19,3 +19,5 @@ Learn about different Denial of Service (DoS) and Distributed DoS (DDoS) attack 
 - DoS/DDoS Attack Detection Techniques
 - DoS/DDoS Protection Tools
 - DoS/DDoS Protection Services
+
+## Practice Questions
