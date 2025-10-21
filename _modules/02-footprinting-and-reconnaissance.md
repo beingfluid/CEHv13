@@ -5,6 +5,8 @@ title: "Footprinting and Reconnaissance"
 
 # Module 2: Footprinting and Reconnaissance
 
+{% include mytest.md %}
+
 ## Course Outline
 
 Learn how to use the latest techniques and tools to perform footprinting and reconnaissance, a critical pre-attack phase of the ethical hacking process.

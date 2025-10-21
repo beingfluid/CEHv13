@@ -7,9 +7,48 @@
   padding: 16px;
   margin: 16px 0;
   overflow-x: auto;
-  font-family: "Monaco", "Courier New", monospace;
+  font-family: "Fira Code", "Monaco", "Cascadia Code", "Courier New", monospace;
   font-size: 14px;
   line-height: 1.4;
+}
+
+/* Terminal styling for bash/shell */
+.highlight.language-bash,
+.highlight.language-shell {
+  background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+  color: #e2e8f0;
+  border: 2px solid #4a5568;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  position: relative;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  overflow-x: auto;
+}
+
+/* Terminal header for bash/shell */
+.highlight.language-bash::before,
+.highlight.language-shell::before {
+  content: "";
+  display: block;
+  height: 30px;
+  background: linear-gradient(90deg, #4a5568 0%, #2d3748 100%);
+  margin: -1rem -1.5rem 1rem -1.5rem;
+  border-radius: 8px 8px 0 0;
+  position: relative;
+  border-bottom: 1px solid #2d3748;
+}
+
+/* Terminal window controls */
+.highlight.language-bash::after,
+.highlight.language-shell::after {
+  content: "⚫ 🟡 🟢";
+  position: absolute;
+  top: 6px;
+  left: 15px;
+  font-size: 12px;
+  line-height: 1;
+  z-index: 1;
 }
 
 .highlight pre {
@@ -24,6 +63,33 @@
   padding: 0;
   border: none;
   font-family: inherit;
+}
+
+/* Terminal syntax highlighting for bash */
+.highlight.language-bash .c,
+.highlight.language-shell .c {
+  color: #68d391; /* Comments in green */
+}
+
+.highlight.language-bash .k,
+.highlight.language-shell .k,
+.highlight.language-bash .nb,
+.highlight.language-shell .nb {
+  color: #90cdf4; /* Keywords in light blue */
+}
+
+.highlight.language-bash .s,
+.highlight.language-bash .s1,
+.highlight.language-bash .s2,
+.highlight.language-shell .s,
+.highlight.language-shell .s1,
+.highlight.language-shell .s2 {
+  color: #fbb6ce; /* Strings in pink */
+}
+
+.highlight.language-bash .nv,
+.highlight.language-shell .nv {
+  color: #f6ad55; /* Variables in orange */
 }
 
 /* Rouge syntax highlighting tokens */

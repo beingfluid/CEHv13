@@ -45,6 +45,7 @@ This workspace contains a comprehensive Jekyll-based study guide for the Certifi
 ## Front Matter Structure
 
 Each module should include:
+
 ```yaml
 ---
 layout: module

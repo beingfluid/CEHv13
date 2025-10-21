@@ -177,6 +177,7 @@ code {
   font-family: "Fira Code", "Monaco", "Cascadia Code", "Roboto Mono", monospace;
 }
 
+/* Regular pre blocks */
 pre {
   background: #f8f9fa;
   border: 1px solid #dee2e6;
@@ -187,6 +188,88 @@ pre {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
+/* Terminal-style for bash/shell code blocks */
+.highlight .language-bash pre,
+.highlight .language-shell pre,
+pre.highlight.language-bash,
+pre.highlight.language-shell,
+.language-bash,
+.language-shell {
+  background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+  color: #e2e8f0;
+  border: 2px solid #4a5568;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  position: relative;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  overflow-x: auto;
+}
+
+/* Terminal header bar */
+.highlight .language-bash pre::before,
+.highlight .language-shell pre::before,
+pre.highlight.language-bash::before,
+pre.highlight.language-shell::before,
+.language-bash::before,
+.language-shell::before {
+  content: "";
+  display: block;
+  height: 30px;
+  background: linear-gradient(90deg, #4a5568 0%, #2d3748 100%);
+  margin: -1rem -1.5rem 1rem -1.5rem;
+  border-radius: 8px 8px 0 0;
+  position: relative;
+  border-bottom: 1px solid #2d3748;
+}
+
+/* Terminal window dots */
+.highlight .language-bash pre::after,
+.highlight .language-shell pre::after,
+pre.highlight.language-bash::after,
+pre.highlight.language-shell::after,
+.language-bash::after,
+.language-shell::after {
+  content: "⚫ 🟡 🟢";
+  position: absolute;
+  top: 6px;
+  left: 15px;
+  font-size: 12px;
+  line-height: 1;
+  z-index: 1;
+}
+
+/* Terminal prompt styling */
+.highlight .language-bash code,
+.highlight .language-shell code,
+.language-bash code,
+.language-shell code {
+  background: transparent;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font-size: 0.9em;
+}
+
+/* Style commands with $ prompt */
+.highlight .language-bash pre code::before,
+.highlight .language-shell pre code::before {
+  content: "$ ";
+  color: #68d391;
+  font-weight: bold;
+  user-select: none;
+}
+
+/* Multi-line command styling */
+.highlight .language-bash .line::before,
+.highlight .language-shell .line::before {
+  content: "$ ";
+  color: #68d391;
+  font-weight: bold;
+  user-select: none;
+}
+
+/* Regular inline code */
 code {
   background: #f1f5f9;
   color: #475569;
@@ -194,6 +277,50 @@ code {
   border-radius: 4px;
   font-size: 0.95em;
   border: 1px solid #e2e8f0;
+}
+
+/* Terminal prompt styling */
+.terminal-prompt {
+  color: #68d391;
+  font-weight: bold;
+  user-select: none;
+}
+
+/* Copy button for code blocks */
+.code-block-wrapper {
+  position: relative;
+}
+
+.copy-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #e2e8f0;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.copy-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Dark theme adjustments */
+body.dark pre {
+  background: #374151;
+  border-color: #4b5563;
+  color: #f9fafb;
+}
+
+body.dark code {
+  background: #374151;
+  color: #d1d5db;
+  border-color: #4b5563;
 }
 
 /* Headers */
