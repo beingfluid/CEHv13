@@ -5,26 +5,26 @@ let questionsData = [];
 
 // Module titles mapping (since mdBook doesn't support front matter)
 const moduleMap = {
-  '1': 'Introduction to Ethical Hacking',
-  '2': 'Footprinting and Reconnaissance',
-  '3': 'Scanning Networks',
-  '4': 'Enumeration',
-  '5': 'Vulnerability Analysis',
-  '6': 'System Hacking',
-  '7': 'Malware Threats',
-  '8': 'Sniffing',
-  '9': 'Social Engineering',
-  '10': 'Denial-of-Service',
-  '11': 'Session Hijacking',
-  '12': 'Evading IDS, Firewalls, and Honeypots',
-  '13': 'Hacking Web Servers',
-  '14': 'Hacking Web Applications',
-  '15': 'SQL Injection',
-  '16': 'Hacking Wireless Networks',
-  '17': 'Hacking Mobile Platforms',
-  '18': 'IoT and OT Hacking',
-  '19': 'Cloud Computing',
-  '20': 'Cryptography'
+  1: "Introduction to Ethical Hacking",
+  2: "Footprinting and Reconnaissance",
+  3: "Scanning Networks",
+  4: "Enumeration",
+  5: "Vulnerability Analysis",
+  6: "System Hacking",
+  7: "Malware Threats",
+  8: "Sniffing",
+  9: "Social Engineering",
+  10: "Denial-of-Service",
+  11: "Session Hijacking",
+  12: "Evading IDS, Firewalls, and Honeypots",
+  13: "Hacking Web Servers",
+  14: "Hacking Web Applications",
+  15: "SQL Injection",
+  16: "Hacking Wireless Networks",
+  17: "Hacking Mobile Platforms",
+  18: "IoT and OT Hacking",
+  19: "Cloud Computing",
+  20: "Cryptography",
 };
 
 // Load questions from JSON file
@@ -202,7 +202,7 @@ function createPracticeQuestionsContainer() {
 // Update page title dynamically from module mapping
 function updatePageTitle() {
   console.log("🔍 updatePageTitle() called");
-  
+
   const currentModule = getCurrentModule();
   console.log("Current module detected:", currentModule);
 
@@ -609,4 +609,45 @@ document.addEventListener("DOMContentLoaded", () => {
   loadQuestions().then(() => {
     loadModuleQuestions();
   });
+
+  // Hide front matter content
+  hideFrontMatter();
 });
+
+// Hide rendered YAML front matter from display
+function hideFrontMatter() {
+  // Find all h2 elements that contain front matter patterns
+  const h2Elements = document.querySelectorAll('h2');
+  
+  h2Elements.forEach(h2 => {
+    const text = h2.textContent.trim();
+    
+    // Check if this looks like rendered front matter
+    if (text.includes('module:') || text.includes('title:') || 
+        text.match(/^module:\s*['"]\d+['"]/) || 
+        text.match(/^title:\s*['"].+['"]/) ||
+        text === 'module: "3"' ||
+        text.includes('module: ') ||
+        text.includes('title: ')) {
+      
+      console.log('Hiding front matter element:', text);
+      h2.classList.add('front-matter-hidden');
+    }
+  });
+
+  // Also check for any p elements that might contain front matter
+  const pElements = document.querySelectorAll('p');
+  
+  pElements.forEach(p => {
+    const text = p.textContent.trim();
+    
+    if ((text.includes('module:') && text.includes('title:')) ||
+        text.match(/^module:\s*['"]\d+['"]/) ||
+        text.match(/^title:\s*['"].+['"]/) ||
+        text === '---' && p.nextElementSibling?.textContent?.includes('module:')) {
+      
+      console.log('Hiding front matter paragraph:', text);
+      p.classList.add('front-matter-hidden');
+    }
+  });
+}

@@ -748,3 +748,8 @@ code:not(.hljs) {
   color: #48bb78;
   font-style: italic;
 }
+
+/* Hide YAML Front Matter Content (handled by JavaScript) */
+.front-matter-hidden {
+  display: none !important;
+}
