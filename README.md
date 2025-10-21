@@ -1,12 +1,20 @@
 # CEH v13 Study Guide
 
-[![Deploy mdBook](https://github.com/beingfluid/CEHv13/actions/workflows/deploy.yml/badge.svg)](https://github.com/beingfluid/CEHv13/actions/workflows/deploy.yml)
+[![Auto-Build Jekyll Site](https://github.com/beingfluid/CEHv13/actions/workflows/deploy.yml/badge.svg)](https://github.com/beingfluid/CEHv13/actions/workflows/deploy.yml)
 
 A comprehensive study guide for the **Certified Ethical Hacker version 13 (CEH v13)** certification exam. This repository contains all the study materials needed to prepare for the 312-50 exam.
 
 🔗 **Live Site**: [https://beingfluid.github.io/CEHv13/](https://beingfluid.github.io/CEHv13/)
 
-**Last Updated**: October 20, 2025 - Enhanced with improved navigation and styling
+**Last Updated**: October 21, 2025 - Fully automated Jekyll deployment with GitHub Actions
+
+## ✨ Features
+
+- 🚀 **Automatic Deployment**: Push changes and GitHub Actions handles the build and deployment
+- 🔍 **Full-Text Search**: Find content across all modules instantly  
+- 📱 **Responsive Design**: Works perfectly on desktop, tablet, and mobile
+- 🎨 **Clean Interface**: Easy-to-read layout with proper syntax highlighting
+- ⚡ **Fast Loading**: Optimized Jekyll build with efficient navigation
 
 ## 📚 About This Guide
 
