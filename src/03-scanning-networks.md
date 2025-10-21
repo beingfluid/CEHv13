@@ -5,6 +5,10 @@ title: "Scanning Networks"
 
 # Module 3: Scanning Networks
 
+{{#include snippets/exam-objectives.md}}
+
+{{#include snippets/mytest.md}}
+
 ## Course Outline
 
 Learn different network scanning techniques and countermeasures.
