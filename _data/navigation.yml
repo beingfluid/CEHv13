@@ -1,0 +1,71 @@
+modules:
+  - title: "Introduction to Ethical Hacking"
+    url: "/01-introduction-to-ethical-hacking/"
+    module: 1
+  - title: "Footprinting and Reconnaissance"
+    url: "/02-footprinting-and-reconnaissance/"
+    module: 2
+  - title: "Scanning Networks"
+    url: "/03-scanning-networks/"
+    module: 3
+  - title: "Enumeration"
+    url: "/04-enumeration/"
+    module: 4
+  - title: "Vulnerability Analysis"
+    url: "/05-vulnerability-analysis/"
+    module: 5
+  - title: "System Hacking"
+    url: "/06-system-hacking/"
+    module: 6
+  - title: "Malware Threats"
+    url: "/07-malware-threats/"
+    module: 7
+  - title: "Sniffing"
+    url: "/08-sniffing/"
+    module: 8
+  - title: "Social Engineering"
+    url: "/09-social-engineering/"
+    module: 9
+  - title: "Denial-of-Service"
+    url: "/10-denial-of-service/"
+    module: 10
+  - title: "Session Hijacking"
+    url: "/11-session-hijacking/"
+    module: 11
+  - title: "Evading IDS, Firewalls, and Honeypots"
+    url: "/12-evading-ids-firewalls-honeypots/"
+    module: 12
+  - title: "Hacking Web Servers"
+    url: "/13-hacking-web-servers/"
+    module: 13
+  - title: "Hacking Web Applications"
+    url: "/14-hacking-web-applications/"
+    module: 14
+  - title: "SQL Injection"
+    url: "/15-sql-injection/"
+    module: 15
+  - title: "Hacking Wireless Networks"
+    url: "/16-hacking-wireless-networks/"
+    module: 16
+  - title: "Hacking Mobile Platforms"
+    url: "/17-hacking-mobile-platforms/"
+    module: 17
+  - title: "IoT and OT Hacking"
+    url: "/18-iot-and-ot-hacking/"
+    module: 18
+  - title: "Cloud Computing"
+    url: "/19-cloud-computing/"
+    module: 19
+  - title: "Cryptography"
+    url: "/20-cryptography/"
+    module: 20
+
+appendices:
+  - title: "Introduction"
+    url: "/introduction/"
+  - title: "Exam Information"
+    url: "/exam-info/"
+  - title: "Tools Reference"
+    url: "/tools-reference/"
+  - title: "Study Tips"
+    url: "/study-tips/"

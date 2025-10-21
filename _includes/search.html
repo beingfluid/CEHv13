@@ -1,0 +1,146 @@
+<!-- Simple Search Implementation -->
+<div class="search-container">
+  <input
+    type="text"
+    id="search-input"
+    placeholder="Search CEH modules..."
+    autocomplete="off"
+  />
+  <div id="search-results" class="search-results hidden"></div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('search-input');
+    const searchResults = document.getElementById('search-results');
+
+    // Sample search data - in a real implementation, this would be generated from site content
+    const searchData = [
+      {% for module in site.modules %}
+      {
+        title: "{{ module.title | escape }}",
+        url: "{{ module.url | relative_url }}",
+        module: "{{ module.module }}",
+        content: "{{ module.content | strip_html | truncate: 200 | escape }}"
+      }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ];
+
+    searchInput.addEventListener('input', function() {
+      const query = this.value.toLowerCase().trim();
+
+      if (query.length < 2) {
+        searchResults.classList.add('hidden');
+        return;
+      }
+
+      const results = searchData.filter(item =>
+        item.title.toLowerCase().includes(query) ||
+        item.content.toLowerCase().includes(query) ||
+        item.module.includes(query)
+      );
+
+      if (results.length > 0) {
+        searchResults.innerHTML = results.map(result => `
+          <div class="search-result">
+            <a href="${result.url}">
+              <strong>Module ${result.module}: ${result.title}</strong>
+              <p>${result.content}</p>
+            </a>
+          </div>
+        `).join('');
+        searchResults.classList.remove('hidden');
+      } else {
+        searchResults.innerHTML = '<div class="search-result">No results found</div>';
+        searchResults.classList.remove('hidden');
+      }
+    });
+
+    // Hide results when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+        searchResults.classList.add('hidden');
+      }
+    });
+  });
+</script>
+
+<style>
+  .search-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  #search-input {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid var(--theme-popup-border);
+    border-radius: 12px;
+    background: var(--theme-popup-bg);
+    color: var(--fg);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+
+  #search-input:focus {
+    outline: none;
+    border-color: var(--sidebar-active);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  }
+
+  .search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--theme-popup-bg);
+    border: 2px solid var(--theme-popup-border);
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    max-height: 400px;
+    overflow-y: auto;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .search-results.hidden {
+    display: none;
+  }
+
+  .search-result {
+    padding: 1rem;
+    border-bottom: 1px solid var(--theme-popup-border);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .search-result:last-child {
+    border-bottom: none;
+  }
+
+  .search-result:hover {
+    background: var(--theme-hover);
+  }
+
+  .search-result a {
+    text-decoration: none;
+    color: var(--fg);
+    display: block;
+  }
+
+  .search-result strong {
+    color: var(--sidebar-active);
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+    display: block;
+  }
+
+  .search-result p {
+    margin: 0.25rem 0 0;
+    font-size: 0.9rem;
+    opacity: 0.8;
+    line-height: 1.4;
+  }
+</style>

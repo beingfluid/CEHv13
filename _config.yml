@@ -1,0 +1,85 @@
+# Site settings
+title: "CEH v13 Study Guide"
+description: "Comprehensive Certified Ethical Hacker v13 study notes and exam preparation materials"
+author: "vishal ingle"
+email: "vishal@beingfluid.com"
+baseurl: "/CEHv13"
+url: "https://beingfluid.github.io"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+theme: minima
+destination: docs
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Collections
+collections:
+  modules:
+    output: true
+    permalink: /:name/
+    sort_by: weight
+
+# Default settings
+defaults:
+  - scope:
+      path: ""
+      type: "modules"
+    values:
+      layout: "module"
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+# Navigation
+navigation:
+  - title: "Introduction"
+    url: "/introduction/"
+  - title: "Study Tips"
+    url: "/study-tips/"
+  - title: "Exam Info"
+    url: "/exam-info/"
+  - title: "Tools Reference"
+    url: "/tools-reference/"
+
+# Search settings
+search: true
+search_full_content: true
+
+# Exclude from processing
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/
+
+# Include
+include:
+  - questions.json
+
+# Sass
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# Repository info
+repository: beingfluid/CEHv13
+github_username: beingfluid
+
+# Social
+twitter_username: beingfluid
+linkedin_username: beingfluid
+# Analytics (optional)
+# google_analytics: UA-XXXXXXXX-X

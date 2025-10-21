@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
+  
+  <!-- SEO -->
+  {% seo %}
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/syntax.css' | relative_url }}">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="{{ '/assets/images/favicon.ico' | relative_url }}">
+</head>
+
+<body class="sidebar-{{ site.sidebar | default: 'visible' }}">
+  <!-- Navigation Sidebar -->
+  <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+    <div class="sidebar-scrollbox">
+      <div class="sidebar-content">
+        <!-- Site Title -->
+        <div class="sidebar-header">
+          <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+          <p>{{ site.description }}</p>
+        </div>
+        
+        <!-- Navigation Menu -->
+        {% include navigation.html %}
+      </div>
+    </div>
+    <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+  </nav>
+
+  <!-- Main Content -->
+  <div id="page-wrapper" class="page-wrapper">
+    <div class="page">
+      <!-- Header Bar -->
+      <div id="menu-bar" class="menu-bar">
+        <div class="left-buttons">
+          <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents">
+            <i class="fa fa-bars"></i>
+          </button>
+          <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme">
+            <i class="fa fa-paint-brush"></i>
+          </button>
+          {% if site.search %}
+          <button id="search-toggle" class="icon-button" type="button" title="Search" aria-label="Toggle Search">
+            <i class="fa fa-search"></i>
+          </button>
+          {% endif %}
+        </div>
+
+        <h1 class="menu-title">{{ site.title }}</h1>
+
+        <div class="right-buttons">
+          <a href="{{ site.repository }}" title="Git repository" aria-label="Git repository" target="_blank">
+            <i id="git-repository-button" class="fa fa-github"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Search -->
+      {% if site.search %}
+      <div id="search-wrapper" class="search-wrapper hidden">
+        {% include search.html %}
+      </div>
+      {% endif %}
+
+      <!-- Content -->
+      <div id="content" class="content">
+        <main>
+          {{ content }}
+        </main>
+
+        <!-- Navigation -->
+        <nav class="nav-wrapper" aria-label="Page navigation">
+          {% include page-navigation.html %}
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+  {% if site.search %}
+  <script src="{{ '/assets/js/search.js' | relative_url }}"></script>
+  {% endif %}
+</body>
+</html>

@@ -1,0 +1,15 @@
+---
+layout: null
+---
+[
+  {% for module in site.modules %}
+    {
+      "title": "{{ module.title | escape }}",
+      "url": "{{ module.url | relative_url }}",
+      "content": "{{ module.content | strip_html | strip_newlines | escape }}",
+      "module": "{{ module.module | escape }}",
+      "categories": {{ module.categories | jsonify }},
+      "tags": {{ module.tags | jsonify }}
+    }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+]

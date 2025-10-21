@@ -1,0 +1,157 @@
+<div class="sidebar-content">
+  <nav class="navigation">
+    <!-- Appendices Section -->
+    <div class="nav-section">
+      <h3>Getting Started</h3>
+      <ul class="nav-list">
+        {% for item in site.data.navigation.appendices %}
+        <li class="nav-item">
+          <a
+            href="{{ item.url | relative_url }}"
+            class="nav-link {% if page.url == item.url %}active{% endif %}"
+          >
+            {{ item.title }}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <!-- Modules Section -->
+    <div class="nav-section">
+      <h3>CEH v13 Study Modules</h3>
+      <ul class="nav-list">
+        {% for item in site.data.navigation.modules %}
+        <li class="nav-item">
+          <a
+            href="{{ item.url | relative_url }}"
+            class="nav-link {% if page.url == item.url %}active{% endif %}"
+          >
+            <span class="module-number">{{ item.module }}</span>
+            <span class="module-title">{{ item.title }}</span>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <!-- Search Box -->
+    {% if site.search %}
+    <div class="nav-section">
+      <div class="search-box">
+        <input
+          type="text"
+          id="search-input"
+          placeholder="Search modules..."
+          autocomplete="off"
+        />
+        <div id="search-results" class="search-results"></div>
+      </div>
+    </div>
+    {% endif %}
+  </nav>
+</div>
+
+<style>
+  .nav-section {
+    margin: 1.5rem 0;
+    padding: 0 1rem;
+  }
+
+  .nav-section h3 {
+    color: var(--sidebar-active);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--theme-popup-border);
+  }
+
+  .nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-item {
+    margin: 0.25rem 0;
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    color: var(--fg);
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+  }
+
+  .nav-link:hover {
+    background: var(--theme-hover);
+    transform: translateX(5px);
+    color: var(--sidebar-active);
+  }
+
+  .nav-link.active {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(139, 92, 246, 0.1));
+    color: var(--sidebar-active);
+    font-weight: 600;
+  }
+
+  .module-number {
+    background: var(--sidebar-active);
+    color: white;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-right: 0.75rem;
+    min-width: 2rem;
+    text-align: center;
+  }
+
+  .module-title {
+    flex: 1;
+  }
+
+  .search-box {
+    position: relative;
+  }
+
+  #search-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--theme-popup-border);
+    border-radius: 8px;
+    background: var(--theme-popup-bg);
+    color: var(--fg);
+    font-size: 0.9rem;
+  }
+
+  .search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--theme-popup-bg);
+    border: 1px solid var(--theme-popup-border);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+  }
+
+  .search-result {
+    padding: 0.75rem;
+    border-bottom: 1px solid var(--theme-popup-border);
+    cursor: pointer;
+  }
+
+  .search-result:hover {
+    background: var(--theme-hover);
+  }
+</style>

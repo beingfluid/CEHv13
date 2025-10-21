@@ -1,0 +1,33 @@
+---
+layout: default
+---
+
+<article class="module">
+  {% if page.module and page.title %}
+  <header class="module-header">
+    <h1>Module {{ page.module }}: {{ page.title }}</h1>
+  </header>
+  {% endif %}
+
+  <div class="module-content">{{ content }}</div>
+
+  {% if page.module %}
+  <footer class="module-footer">
+    <div class="module-info">
+      <p><strong>Module:</strong> {{ page.module }}</p>
+      <p>
+        <strong>Category:</strong> {{ page.category | default: "CEH Study
+        Material" }}
+      </p>
+      {% if page.tags %}
+      <p>
+        <strong>Tags:</strong>
+        {% for tag in page.tags %}
+        <span class="tag">{{ tag }}</span>{% unless forloop.last %}, {%
+        endunless %} {% endfor %}
+      </p>
+      {% endif %}
+    </div>
+  </footer>
+  {% endif %}
+</article>
