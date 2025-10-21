@@ -3,6 +3,30 @@
 // Dynamic Practice Questions System
 let questionsData = [];
 
+// Module titles mapping (since mdBook doesn't support front matter)
+const moduleMap = {
+  '1': 'Introduction to Ethical Hacking',
+  '2': 'Footprinting and Reconnaissance',
+  '3': 'Scanning Networks',
+  '4': 'Enumeration',
+  '5': 'Vulnerability Analysis',
+  '6': 'System Hacking',
+  '7': 'Malware Threats',
+  '8': 'Sniffing',
+  '9': 'Social Engineering',
+  '10': 'Denial-of-Service',
+  '11': 'Session Hijacking',
+  '12': 'Evading IDS, Firewalls, and Honeypots',
+  '13': 'Hacking Web Servers',
+  '14': 'Hacking Web Applications',
+  '15': 'SQL Injection',
+  '16': 'Hacking Wireless Networks',
+  '17': 'Hacking Mobile Platforms',
+  '18': 'IoT and OT Hacking',
+  '19': 'Cloud Computing',
+  '20': 'Cryptography'
+};
+
 // Load questions from JSON file
 async function loadQuestions() {
   // Check if we're in development mode (localhost)
@@ -59,16 +83,19 @@ async function loadQuestions() {
   console.log("Using embedded questions:", questionsData.length);
 }
 
-// Extract module number from various sources
+// Extract module number from URL (primary method)
 function getCurrentModule() {
-  // First priority: Check for front matter data injected by head template
-  if (window.pageMetadata && window.pageMetadata.module) {
-    const module = window.pageMetadata.module;
-    console.log("Module from front matter:", module);
+  // Primary: Parse from URL (most reliable)
+  const path = window.location.pathname;
+  console.log("Current path:", path);
+  const urlMatch = path.match(/(\d+)-/);
+  if (urlMatch) {
+    const module = urlMatch[1];
+    console.log("✅ Module from URL:", module);
     return module;
   }
 
-  // Second priority: Get module from data attribute in practice questions container
+  // Fallback: Get module from data attribute in practice questions container
   const practiceContainer = document.getElementById(
     "practice-questions-container"
   );
@@ -78,32 +105,8 @@ function getCurrentModule() {
     return module;
   }
 
-  // Third priority: Get module from page metadata
-  const metaTags = document.querySelectorAll("meta");
-  for (let meta of metaTags) {
-    if (meta.getAttribute("name") === "module") {
-      const module = meta.getAttribute("content");
-      console.log("Module from metadata:", module);
-      return module;
-    }
-  }
-
-  // Try to find module in page content (look for front matter pattern)
-  const pageContent = document.body.innerText;
-  const moduleMatch = pageContent.match(/module:\s*["|']?(\d+)["|']?/i);
-  if (moduleMatch) {
-    const module = moduleMatch[1];
-    console.log("Module from content:", module);
-    return module;
-  }
-
-  // Fallback to URL parsing
-  const path = window.location.pathname;
-  console.log("Current path:", path);
-  const urlMatch = path.match(/(\d+)-/);
-  const module = urlMatch ? urlMatch[1] : null;
-  console.log("Module from URL:", module);
-  return module;
+  console.log("❌ No module detected");
+  return null;
 }
 
 // Generate HTML for practice questions
@@ -196,55 +199,44 @@ function createPracticeQuestionsContainer() {
   }
 }
 
-// Update page title dynamically from front matter
+// Update page title dynamically from module mapping
 function updatePageTitle() {
-  const currentModule = getCurrentModule();
+  console.log("🔍 updatePageTitle() called");
   
-  if (currentModule) {
-    // Try to get title from window.pageMetadata first, then extract from front matter
-    let moduleTitle = '';
-    
-    if (window.pageMetadata && window.pageMetadata.moduleTitle) {
-      moduleTitle = window.pageMetadata.moduleTitle;
-    } else {
-      // Extract title from front matter in page content
-      const pageContent = document.body.innerText;
-      const titleMatch = pageContent.match(/title:\s*["|']?([^"|'\n]+)["|']?/i);
-      if (titleMatch) {
-        moduleTitle = titleMatch[1].trim();
+  const currentModule = getCurrentModule();
+  console.log("Current module detected:", currentModule);
+
+  if (currentModule && moduleMap[currentModule]) {
+    const moduleTitle = moduleMap[currentModule];
+    const newTitle = `Module ${currentModule}: ${moduleTitle}`;
+
+    // Look for existing H1 or create one
+    let mainHeading = document.querySelector("h1");
+
+    if (!mainHeading) {
+      // Create H1 element if it doesn't exist
+      mainHeading = document.createElement("h1");
+
+      // Insert it at the beginning of the main content
+      const mainContent = document.querySelector("main");
+      if (mainContent && mainContent.firstElementChild) {
+        mainContent.insertBefore(mainHeading, mainContent.firstElementChild);
+      } else if (mainContent) {
+        mainContent.appendChild(mainHeading);
       }
+
+      // Add some styling
+      mainHeading.style.marginTop = "0";
+      mainHeading.style.marginBottom = "1.5rem";
+      mainHeading.style.fontSize = "2.5rem";
+      mainHeading.style.fontWeight = "600";
+      mainHeading.style.color = "var(--fg)";
     }
-    
-    if (moduleTitle) {
-      const newTitle = `Module ${currentModule}: ${moduleTitle}`;
-      
-      // Look for existing H1 or create one
-      let mainHeading = document.querySelector('h1');
-      
-      if (!mainHeading) {
-        // Create H1 element if it doesn't exist
-        mainHeading = document.createElement('h1');
-        
-        // Insert it at the beginning of the main content
-        const mainContent = document.querySelector('main') || document.querySelector('.content') || document.body;
-        const firstChild = mainContent.firstElementChild;
-        
-        if (firstChild && firstChild.tagName === 'NAV') {
-          // Skip navigation, insert after
-          mainContent.insertBefore(mainHeading, firstChild.nextSibling);
-        } else {
-          // Insert at the very beginning
-          mainContent.insertBefore(mainHeading, firstChild);
-        }
-        
-        // Add some styling
-        mainHeading.style.marginTop = '1rem';
-        mainHeading.style.marginBottom = '1.5rem';
-      }
-      
-      mainHeading.textContent = newTitle;
-      console.log("Updated page title to:", newTitle);
-    }
+
+    mainHeading.textContent = newTitle;
+    console.log("✅ Updated page title to:", newTitle);
+  } else {
+    console.log("❌ No module mapping found for:", currentModule);
   }
 }
 
