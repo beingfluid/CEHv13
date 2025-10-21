@@ -790,9 +790,14 @@ code:not(.hljs) {
   font-style: italic;
 }
 
-/* Hide YAML Front Matter Content */
-.front-matter-hidden {
+/* Hide YAML Front Matter Content - Pure CSS Solution */
+/* mdBook renders front matter as HR followed by H2 without ID */
+/* Hide H2 elements without ID that immediately follow HR (front matter pattern) */
+main hr + h2:not([id]) {
   display: none !important;
 }
 
-/* Note: Front matter CSS hiding no longer needed - using proper H1 headings instead */
+/* Hide HR elements in main content that are likely front matter separators */
+main > hr {
+  display: none !important;
+}
