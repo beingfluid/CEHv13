@@ -219,4 +219,6 @@ nmap -6 -sS 2001:db8::1
 - Nuclei
 - Nikto (Web vulnerability)
 
-## Practice Questions
+{% include practice-questions-template.md %}
+
+{% include references.md %}

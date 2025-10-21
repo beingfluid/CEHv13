@@ -1,0 +1,88 @@
+[
+  {
+    "module": "3",
+    "question": "Which Nmap scan type is considered the most stealthy?",
+    "options": [
+      "TCP Connect scan (-sT)",
+      "TCP SYN scan (-sS)",
+      "UDP scan (-sU)",
+      "TCP FIN scan (-sF)"
+    ],
+    "correct": 3,
+    "explanation": "TCP FIN scan (-sF) is considered more stealthy as it sends FIN packets which are less likely to be logged by firewalls and IDS systems."
+  },
+  {
+    "module": "3",
+    "question": "What is the default timing template for Nmap scans?",
+    "options": [
+      "-T2 (Polite)",
+      "-T3 (Normal)",
+      "-T4 (Aggressive)",
+      "-T5 (Insane)"
+    ],
+    "correct": 1,
+    "explanation": "-T3 (Normal) is the default timing template that provides a balance between speed and stealth."
+  },
+  {
+    "module": "3",
+    "question": "Which Nmap option is used for operating system detection?",
+    "options": ["-sV", "-O", "-A", "-sC"],
+    "correct": 1,
+    "explanation": "-O option enables OS detection in Nmap, while -sV is for service version detection."
+  },
+  {
+    "module": "9",
+    "question": "What does the -sn option do in Nmap?",
+    "options": [
+      "Performs a TCP SYN scan",
+      "Skips the port scan and only does host discovery",
+      "Performs service version detection",
+      "Enables verbose output"
+    ],
+    "correct": 1,
+    "explanation": "The -sn option (ping scan) skips the port scan phase and only performs host discovery to determine which hosts are online."
+  },
+  {
+    "module": "3",
+    "question": "Which NSE script category is used for vulnerability detection?",
+    "options": ["discovery", "safe", "vuln", "intrusive"],
+    "correct": 2,
+    "explanation": "The 'vuln' category contains NSE scripts specifically designed for vulnerability detection and assessment."
+  },
+  {
+    "module": "1",
+    "question": "What are the three main types of hackers?",
+    "options": [
+      "Black hat, White hat, Script kiddie",
+      "Black hat, White hat, Gray hat",
+      "Insider, Outsider, Script kiddie",
+      "Ethical, Unethical, Amateur"
+    ],
+    "correct": 1,
+    "explanation": "The three main types are Black hat (malicious), White hat (ethical), and Gray hat (between ethical and malicious)."
+  },
+  {
+    "module": "1",
+    "question": "Which phase comes first in ethical hacking methodology?",
+    "options": [
+      "Scanning",
+      "Reconnaissance",
+      "Gaining Access",
+      "Maintaining Access"
+    ],
+    "correct": 1,
+    "explanation": "Reconnaissance (information gathering) is the first phase in ethical hacking methodology."
+  },
+  {
+    "module": "3",
+    "question": "What is the primary purpose of footprinting?",
+    "options": [
+      "Gaining unauthorized access",
+      "Information gathering about the target",
+      "Exploiting vulnerabilities",
+      "Maintaining persistence"
+    ],
+    "correct": 1,
+    "explanation": "Footprinting is the process of gathering information about a target system or network to identify potential attack vectors."
+  }
+]
