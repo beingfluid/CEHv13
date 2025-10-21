@@ -19,8 +19,6 @@ curly-quotes = false
 git-repository-icon = "fa-github"
 site-url = "https://beingfluid.github.io/CEHv13/"
 additional-css = ["./theme/css/extra.css"]
-additional-js = ["./theme/js/enhanced.js"]
-copy-to-root = ["questions.json"]
 
 [output.html.search]
 enable = true
