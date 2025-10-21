@@ -610,74 +610,49 @@ document.addEventListener("DOMContentLoaded", () => {
     loadModuleQuestions();
   });
 
-  // Note: Front matter hiding no longer needed - using proper H1 headings instead
+  // Hide rendered YAML front matter (keep the YAML but hide its display)
+  setTimeout(hideFrontMatter, 100);
 });
 
 // Hide rendered YAML front matter from display
 function hideFrontMatter() {
-  console.log("Running hideFrontMatter...");
-
-  // Find all h2 elements in main content
-  const h2Elements = document.querySelectorAll("main h2");
-
-  h2Elements.forEach(h2 => {
-    const text = h2.textContent.trim();
-
-    // Log for debugging
-    console.log("Checking H2 element:", text);
-    console.log("Has ID:", h2.hasAttribute("id"));
-
-    // Check if this looks like rendered front matter
-    // mdBook renders YAML as: module: "3" \n title: "Scanning Networks"
-    if (
-      text.includes("module:") ||
-      text.includes("title:") ||
-      text.match(/module:\s*['"]\d+['"]/) ||
-      text.match(/title:\s*['"].+['"]/) ||
-      (text.includes("module:") && text.includes("title:")) ||
-      text.match(/^module:\s*['"]\d+['"]\s*title:\s*['"].+['"]/) ||
-      text.includes("module: ") ||
-      text.includes("title: ") ||
-      !h2.hasAttribute("id") // Front matter h2s don't have IDs
-    ) {
-      console.log("✅ Hiding front matter H2 element:", text);
-      h2.classList.add("front-matter-hidden", "front-matter-h2");
-      h2.style.display = "none"; // Force hide with inline style as backup
-    }
-  });
-
-  // Hide HR elements that precede front matter (mdBook adds <hr/> before YAML)
+  console.log("🔍 Hiding front matter elements...");
+  
+  // Target the specific pattern that mdBook renders front matter as
+  // Look for HR followed by H2 without ID containing module/title
   const hrElements = document.querySelectorAll("main hr");
-
+  
   hrElements.forEach(hr => {
     const nextElement = hr.nextElementSibling;
-    if (
-      nextElement &&
-      nextElement.tagName === "H2" &&
-      !nextElement.hasAttribute("id") &&
-      (nextElement.textContent.includes("module:") ||
-        nextElement.textContent.includes("title:"))
-    ) {
-      console.log("✅ Hiding front matter HR element");
-      hr.classList.add("front-matter-hidden", "front-matter-hr");
-      hr.style.display = "none"; // Force hide with inline style as backup
+    
+    // Check if next element is H2 without ID and contains front matter
+    if (nextElement && 
+        nextElement.tagName === "H2" && 
+        !nextElement.hasAttribute("id") &&
+        (nextElement.textContent.includes('module:') || 
+         nextElement.textContent.includes('title:'))) {
+      
+      console.log("✅ Hiding front matter HR + H2:", nextElement.textContent.trim());
+      
+      // Hide both the HR and the H2
+      hr.style.display = "none";
+      nextElement.style.display = "none";
     }
   });
-
-  // Also check for any p elements that might contain front matter
-  const pElements = document.querySelectorAll("p");
-
-  pElements.forEach(p => {
-    const text = p.textContent.trim();
-
-    if (
-      (text.includes("module:") && text.includes("title:")) ||
-      text.match(/^module:\s*['"]\d+['"]/) ||
-      text.match(/^title:\s*['"].+['"]/) ||
-      (text === "---" && p.nextElementSibling?.textContent?.includes("module:"))
-    ) {
-      console.log("Hiding front matter paragraph:", text);
-      p.classList.add("front-matter-hidden");
+  
+  // Also target any standalone H2 elements that look like front matter
+  const h2Elements = document.querySelectorAll("main h2:not([id])");
+  
+  h2Elements.forEach(h2 => {
+    const text = h2.textContent.trim();
+    
+    // Check if it contains front matter patterns
+    if ((text.includes('module:') && text.includes('title:')) ||
+        text.match(/^module:\s*['"]\d+['"]\s*title:/) ||
+        (text.includes('module: "') && text.includes('title: "'))) {
+      
+      console.log("✅ Hiding standalone front matter H2:", text);
+      h2.style.display = "none";
     }
   });
 }
