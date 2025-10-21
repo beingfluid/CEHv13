@@ -625,10 +625,10 @@ function hideFrontMatter() {
 
   h2Elements.forEach(h2 => {
     const text = h2.textContent.trim();
-    
+
     // Log for debugging
     console.log("Checking H2 element:", text);
-    console.log("Has ID:", h2.hasAttribute('id'));
+    console.log("Has ID:", h2.hasAttribute("id"));
 
     // Check if this looks like rendered front matter
     // mdBook renders YAML as: module: "3" \n title: "Scanning Networks"
@@ -641,7 +641,7 @@ function hideFrontMatter() {
       text.match(/^module:\s*['"]\d+['"]\s*title:\s*['"].+['"]/) ||
       text.includes("module: ") ||
       text.includes("title: ") ||
-      !h2.hasAttribute('id') // Front matter h2s don't have IDs
+      !h2.hasAttribute("id") // Front matter h2s don't have IDs
     ) {
       console.log("✅ Hiding front matter H2 element:", text);
       h2.classList.add("front-matter-hidden", "front-matter-h2");
@@ -657,7 +657,7 @@ function hideFrontMatter() {
     if (
       nextElement &&
       nextElement.tagName === "H2" &&
-      !nextElement.hasAttribute('id') &&
+      !nextElement.hasAttribute("id") &&
       (nextElement.textContent.includes("module:") ||
         nextElement.textContent.includes("title:"))
     ) {
