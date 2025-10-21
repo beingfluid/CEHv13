@@ -3,7 +3,7 @@ module: "10"
 title: "Denial-of-Service"
 ---
 
-# Module 10: Denial-of-Service
+<!-- # Module 10: Denial-of-Service -->
 
 ## Course Outline
 

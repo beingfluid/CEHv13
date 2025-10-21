@@ -3,7 +3,7 @@ module: "1"
 title: "Introduction to Ethical Hacking"
 ---
 
-# Module 1: Introduction to Ethical Hacking
+<!-- # Module 1: Introduction to Ethical Hacking -->
 
 ## Course Outline
 

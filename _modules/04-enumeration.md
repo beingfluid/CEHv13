@@ -3,7 +3,7 @@ module: "4"
 title: "Enumeration"
 ---
 
-# Module 4: Enumeration
+<!-- # Module 4: Enumeration -->
 
 ## Course Outline
 

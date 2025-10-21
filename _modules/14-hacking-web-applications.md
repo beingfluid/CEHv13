@@ -3,7 +3,7 @@ module: "14"
 title: "Hacking Web Applications"
 ---
 
-# Module 14: Hacking Web Applications
+<!-- # Module 14: Hacking Web Applications -->
 
 ## Course Outline
 

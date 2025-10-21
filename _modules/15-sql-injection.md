@@ -3,7 +3,7 @@ module: "15"
 title: "SQL Injection"
 ---
 
-# Module 15: SQL Injection
+<!-- # Module 15: SQL Injection -->
 
 ## Course Outline
 

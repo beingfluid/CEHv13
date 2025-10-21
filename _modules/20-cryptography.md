@@ -3,7 +3,7 @@ module: "20"
 title: "Cryptography"
 ---
 
-# Module 20: Cryptography
+<!-- # Module 20: Cryptography -->
 
 ## Course Outline
 

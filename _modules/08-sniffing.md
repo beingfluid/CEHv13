@@ -3,7 +3,7 @@ module: "8"
 title: "Sniffing"
 ---
 
-# Module 8: Sniffing
+<!-- # Module 8: Sniffing -->
 
 ## Course Outline
 

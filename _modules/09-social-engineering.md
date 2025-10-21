@@ -3,7 +3,7 @@ module: "9"
 title: "Social Engineering"
 ---
 
-# Module 9: Social Engineering
+<!-- # Module 9: Social Engineering -->
 
 ## Course Outline
 

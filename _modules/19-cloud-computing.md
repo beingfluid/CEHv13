@@ -3,7 +3,7 @@ module: "19"
 title: "Cloud Computing"
 ---
 
-# Module 19: Cloud Computing
+<!-- # Module 19: Cloud Computing -->
 
 ## Course Outline
 

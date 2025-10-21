@@ -3,7 +3,7 @@ module: "16"
 title: "Hacking Wireless Networks"
 ---
 
-# Module 16: Hacking Wireless Networks
+<!-- # Module 16: Hacking Wireless Networks -->
 
 ## Course Outline
 

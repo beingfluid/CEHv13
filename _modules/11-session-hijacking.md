@@ -3,7 +3,7 @@ module: "11"
 title: "Session Hijacking"
 ---
 
-# Module 11: Session Hijacking
+<!-- # Module 11: Session Hijacking -->
 
 ## Course Outline
 

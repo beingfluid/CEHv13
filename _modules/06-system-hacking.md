@@ -3,7 +3,7 @@ module: "6"
 title: "System Hacking"
 ---
 
-# Module 6: System Hacking
+<!-- # Module 6: System Hacking -->
 
 ## Course Outline
 

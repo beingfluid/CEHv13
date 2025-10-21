@@ -3,7 +3,7 @@ module: "2"
 title: "Footprinting and Reconnaissance"
 ---
 
-# Module 2: Footprinting and Reconnaissance
+<!-- # Module 2: Footprinting and Reconnaissance -->
 
 {% include mytest.md %}
 
