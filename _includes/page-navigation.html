@@ -12,7 +12,9 @@
       <i class="fa fa-angle-left"></i>
       <span class="nav-text">
         <strong>Previous</strong><br />
-        <span class="nav-title">Module {{ prev_module.module }}: {{ prev_module.title }}</span>
+        <span class="nav-title"
+          >Module {{ prev_module.module }}: {{ prev_module.title }}</span
+        >
       </span>
     </a>
     {% endif %} {% if next_index < modules.size %} {% assign next_module =
@@ -20,7 +22,9 @@
     <a href="{{ next_module.url | relative_url }}" class="nav-link nav-next">
       <span class="nav-text">
         <strong>Next</strong><br />
-        <span class="nav-title">Module {{ next_module.module }}: {{ next_module.title }}</span>
+        <span class="nav-title"
+          >Module {{ next_module.module }}: {{ next_module.title }}</span
+        >
       </span>
       <i class="fa fa-angle-right"></i>
     </a>
