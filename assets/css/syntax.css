@@ -2,14 +2,163 @@
 
 .highlight {
   background: #f8f8f8;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: none !important;
+  border-radius: 8px;
   padding: 16px;
   margin: 16px 0;
   overflow-x: auto;
   font-family: "Fira Code", "Monaco", "Cascadia Code", "Courier New", monospace;
   font-size: 14px;
   line-height: 1.4;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Clean styling for non-terminal code blocks */
+.highlight.language-js,
+.highlight.language-javascript,
+.highlight.language-python,
+.highlight.language-java,
+.highlight.language-c,
+.highlight.language-cpp,
+.highlight.language-csharp,
+.highlight.language-php,
+.highlight.language-ruby,
+.highlight.language-go,
+.highlight.language-rust,
+.highlight.language-sql,
+.highlight.language-html,
+.highlight.language-css,
+.highlight.language-xml,
+.highlight.language-json,
+.highlight.language-yaml,
+.highlight.language-yml {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 8px !important;
+  padding: 16px !important;
+  margin: 16px 0 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Remove borders from nested elements in non-terminal code blocks */
+.highlight.language-js pre,
+.highlight.language-javascript pre,
+.highlight.language-python pre,
+.highlight.language-java pre,
+.highlight.language-c pre,
+.highlight.language-cpp pre,
+.highlight.language-csharp pre,
+.highlight.language-php pre,
+.highlight.language-ruby pre,
+.highlight.language-go pre,
+.highlight.language-rust pre,
+.highlight.language-sql pre,
+.highlight.language-html pre,
+.highlight.language-css pre,
+.highlight.language-xml pre,
+.highlight.language-json pre,
+.highlight.language-yaml pre,
+.highlight.language-yml pre,
+.highlight.language-js code,
+.highlight.language-javascript code,
+.highlight.language-python code,
+.highlight.language-java code,
+.highlight.language-c code,
+.highlight.language-cpp code,
+.highlight.language-csharp code,
+.highlight.language-php code,
+.highlight.language-ruby code,
+.highlight.language-go code,
+.highlight.language-rust code,
+.highlight.language-sql code,
+.highlight.language-html code,
+.highlight.language-css code,
+.highlight.language-xml code,
+.highlight.language-json code,
+.highlight.language-yaml code,
+.highlight.language-yml code {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Clean styling for direct language classes (without .highlight wrapper) */
+.language-js,
+.language-javascript,
+.language-python,
+.language-java,
+.language-c,
+.language-cpp,
+.language-csharp,
+.language-php,
+.language-ruby,
+.language-go,
+.language-rust,
+.language-sql,
+.language-html,
+.language-css,
+.language-xml,
+.language-json,
+.language-yaml,
+.language-yml {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 8px !important;
+  padding: 16px !important;
+  margin: 16px 0 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+  overflow-x: auto;
+  font-family: "Fira Code", "Monaco", "Cascadia Code", "Courier New", monospace;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Remove borders from nested elements in direct language classes */
+.language-js pre,
+.language-javascript pre,
+.language-python pre,
+.language-java pre,
+.language-c pre,
+.language-cpp pre,
+.language-csharp pre,
+.language-php pre,
+.language-ruby pre,
+.language-go pre,
+.language-rust pre,
+.language-sql pre,
+.language-html pre,
+.language-css pre,
+.language-xml pre,
+.language-json pre,
+.language-yaml pre,
+.language-yml pre,
+.language-js code,
+.language-javascript code,
+.language-python code,
+.language-java code,
+.language-c code,
+.language-cpp code,
+.language-csharp code,
+.language-php code,
+.language-ruby code,
+.language-go code,
+.language-rust code,
+.language-sql code,
+.language-html code,
+.language-css code,
+.language-xml code,
+.language-json code,
+.language-yaml code,
+.language-yml code {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-shadow: none !important;
 }
 
 /* Terminal styling for bash/shell */

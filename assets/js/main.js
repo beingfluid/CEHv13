@@ -150,35 +150,8 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
   document.head.appendChild(style);
 
-  // Terminal formatting for bash code blocks
-  function formatTerminalBlocks() {
-    const bashBlocks = document.querySelectorAll('.language-bash, .language-shell');
-    
-    bashBlocks.forEach(block => {
-      const pre = block.querySelector('pre');
-      if (pre) {
-        const code = pre.querySelector('code');
-        if (code) {
-          const lines = code.innerHTML.split('\n');
-          const formattedLines = lines.map(line => {
-            // Skip empty lines and lines that already have prompts
-            if (line.trim() === '' || line.includes('$')) {
-              return line;
-            }
-            // Add $ prompt to command lines (not comments)
-            if (line.trim() && !line.trim().startsWith('#')) {
-              return `<span class="terminal-prompt">$ </span>${line}`;
-            }
-            return line;
-          });
-          code.innerHTML = formattedLines.join('\n');
-        }
-      }
-    });
-  }
-
-  // Apply terminal formatting
-  formatTerminalBlocks();
+  // Simple terminal styling - CSS handles the visual appearance
+  console.log("Terminal styles applied via CSS");
 
   console.log("Jekyll CEH Study Guide loaded successfully!");
 });

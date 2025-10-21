@@ -36,6 +36,10 @@ Learn different network scanning techniques and countermeasures.
 
 ## Basic Nmap Commands
 
+```js
+console.log(str);
+```
+
 ```bash
 # Basic host discovery
 nmap -sn 192.168.1.0/24

@@ -188,85 +188,142 @@ pre {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-/* Terminal-style for bash/shell code blocks */
-.highlight .language-bash pre,
-.highlight .language-shell pre,
-pre.highlight.language-bash,
-pre.highlight.language-shell,
+/* Clean Terminal-style for bash/shell code blocks */
 .language-bash,
-.language-shell {
-  background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
-  color: #e2e8f0;
-  border: 2px solid #4a5568;
-  border-radius: 12px;
-  padding: 1rem 1.5rem;
-  margin: 1.5rem 0;
+.language-shell,
+.highlight.language-bash,
+.highlight.language-shell {
+  background: linear-gradient(
+    145deg,
+    #0f172a 0%,
+    #1e293b 50%,
+    #0f172a 100%
+  ) !important;
+  border: 1px solid #475569 !important;
+  border-radius: 12px !important;
+  padding: 0 !important;
+  margin: 1.5rem 0 !important;
   position: relative;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-  overflow-x: auto;
+  box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.3) !important;
+  overflow: hidden;
+  font-family: "SF Mono", Monaco, "Cascadia Code", monospace;
 }
 
 /* Terminal header bar */
-.highlight .language-bash pre::before,
-.highlight .language-shell pre::before,
-pre.highlight.language-bash::before,
-pre.highlight.language-shell::before,
 .language-bash::before,
-.language-shell::before {
+.language-shell::before,
+.highlight.language-bash::before,
+.highlight.language-shell::before {
   content: "";
   display: block;
-  height: 30px;
-  background: linear-gradient(90deg, #4a5568 0%, #2d3748 100%);
-  margin: -1rem -1.5rem 1rem -1.5rem;
-  border-radius: 8px 8px 0 0;
+  height: 36px;
+  background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+  margin: 0;
+  border-radius: 12px 12px 0 0;
   position: relative;
-  border-bottom: 1px solid #2d3748;
+  border-bottom: 1px solid #475569;
 }
 
-/* Terminal window dots */
-.highlight .language-bash pre::after,
-.highlight .language-shell pre::after,
-pre.highlight.language-bash::after,
-pre.highlight.language-shell::after,
+/* Terminal window controls (colored circles) */
 .language-bash::after,
-.language-shell::after {
-  content: "⚫ 🟡 🟢";
+.language-shell::after,
+.highlight.language-bash::after,
+.highlight.language-shell::after {
+  content: "";
   position: absolute;
-  top: 6px;
-  left: 15px;
-  font-size: 12px;
-  line-height: 1;
-  z-index: 1;
+  top: 14px;
+  left: 14px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ef4444;
+  box-shadow: 18px 0 0 #f59e0b, 36px 0 0 #22c55e;
+  z-index: 2;
+}
+
+/* Terminal content area */
+.language-bash pre,
+.language-shell pre,
+div.language-bash pre,
+div.language-shell pre {
+  background: transparent !important;
+  color: #ffffff !important;
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.5) !important;
+  padding: 1.5rem 1.5rem 1rem 1.5rem !important;
+  margin: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  font-family: "SF Mono", Monaco, "Cascadia Code", monospace !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  overflow-x: auto;
+}
+
+/* Terminal code text - maximum specificity to ensure visibility */
+.language-bash code,
+.language-shell code,
+pre.highlight.language-bash code,
+pre.highlight.language-shell code,
+.highlight .language-bash code,
+.highlight .language-shell code,
+div.language-bash code,
+div.language-shell code {
+  background: transparent !important;
+  color: #ffffff !important;
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.5) !important;
+  border: none !important;
+  padding: 0 !important;
+  font-family: "SF Mono", Monaco, "Cascadia Code", monospace !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
 }
 
 /* Terminal prompt styling */
-.highlight .language-bash code,
-.highlight .language-shell code,
-.language-bash code,
-.language-shell code {
-  background: transparent;
-  color: inherit;
-  border: none;
-  padding: 0;
-  font-size: 0.9em;
-}
-
-/* Style commands with $ prompt */
-.highlight .language-bash pre code::before,
-.highlight .language-shell pre code::before {
+.language-bash code::before,
+.language-shell code::before {
   content: "$ ";
-  color: #68d391;
-  font-weight: bold;
+  color: #22c55e !important;
+  font-weight: 600;
   user-select: none;
 }
 
-/* Multi-line command styling */
-.highlight .language-bash .line::before,
-.highlight .language-shell .line::before {
-  content: "$ ";
-  color: #68d391;
-  font-weight: bold;
-  user-select: none;
+/* Override any Rouge syntax highlighting in terminals */
+.language-bash .highlight,
+.language-shell .highlight,
+.language-bash .highlight *,
+.language-shell .highlight * {
+  color: #ffffff !important;
+  background: transparent !important;
+}
+
+/* Ensure all text elements in terminal are visible */
+.language-bash *,
+.language-shell * {
+  color: inherit !important;
+}
+
+/* Specific overrides for common syntax highlighting classes */
+.language-bash .c,
+.language-bash .cm,
+.language-bash .cp,
+.language-bash .c1,
+.language-bash .cs,
+.language-shell .c,
+.language-shell .cm,
+.language-shell .cp,
+.language-shell .c1,
+.language-shell .cs {
+  color: #64748b !important;
+  font-style: italic;
+}
+
+.language-bash .s,
+.language-bash .s1,
+.language-bash .s2,
+.language-shell .s,
+.language-shell .s1,
+.language-shell .s2 {
+  color: #fbbf24 !important;
 }
 
 /* Regular inline code */
@@ -277,13 +334,6 @@ code {
   border-radius: 4px;
   font-size: 0.95em;
   border: 1px solid #e2e8f0;
-}
-
-/* Terminal prompt styling */
-.terminal-prompt {
-  color: #68d391;
-  font-weight: bold;
-  user-select: none;
 }
 
 /* Copy button for code blocks */
