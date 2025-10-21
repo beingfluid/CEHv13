@@ -754,16 +754,4 @@ code:not(.hljs) {
   display: none !important;
 }
 
-/* Direct CSS hiding as backup - hide h2 elements without id (likely front matter) */
-main hr + h2:not([id]) {
-  display: none !important;
-}
-
-/* Enhanced front matter hiding */
-.front-matter-h2 {
-  display: none !important;
-}
-
-.front-matter-hr {
-  display: none !important;
-}
+/* Note: Front matter CSS hiding no longer needed - using proper H1 headings instead */

@@ -610,10 +610,7 @@ document.addEventListener("DOMContentLoaded", () => {
     loadModuleQuestions();
   });
 
-  // Hide front matter content with delay to ensure DOM is ready
-  setTimeout(() => {
-    hideFrontMatter();
-  }, 500);
+  // Note: Front matter hiding no longer needed - using proper H1 headings instead
 });
 
 // Hide rendered YAML front matter from display
