@@ -1,66 +1,66 @@
 name: Auto-Build Jekyll Site
 
 on:
-  push:
-    branches: [main]
-    paths-ignore:
-      - 'docs/**'
-      - 'README.md'
-      - 'UPDATE_GUIDE.md'
-  workflow_dispatch:
+    push:
+        branches: [main]
+        paths-ignore:
+            - "docs/**"
+            - "README.md"
+            - "UPDATE_GUIDE.md"
+    workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow commits
 permissions:
-  contents: write
+    contents: write
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    # Skip if commit message contains [skip ci]
-    if: ${{ !contains(github.event.head_commit.message, '[skip ci]') }}
-    
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          fetch-depth: 0
+    build:
+        runs-on: ubuntu-latest
+        # Skip if commit message contains [skip ci]
+        if: ${{ !contains(github.event.head_commit.message, '[skip ci]') }}
 
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.2'
-          bundler-cache: true
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+              with:
+                  token: ${{ secrets.GITHUB_TOKEN }}
+                  fetch-depth: 0
 
-      - name: Install dependencies
-        run: bundle install
+            - name: Setup Ruby
+              uses: ruby/setup-ruby@v1
+              with:
+                  ruby-version: "3.2"
+                  bundler-cache: true
 
-      - name: Build Jekyll site to docs folder
-        run: |
-          rm -rf docs/
-          bundle exec jekyll build
-          
-      - name: Add .nojekyll file
-        run: touch docs/.nojekyll
+            - name: Install dependencies
+              run: bundle install
 
-      - name: Commit and push built site
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Actions Auto-Build"
-          
-          # Check if there are changes in docs folder
-          git add docs/
-          
-          if git diff --staged --quiet; then
-            echo "✅ No changes to deploy"
-          else
-            echo "🚀 Changes detected, deploying..."
-            git commit -m "🤖 Auto-deploy: Build Jekyll site [skip ci]
-            
-            📝 Triggered by: ${{ github.event.head_commit.message }}
-            👤 Author: ${{ github.event.head_commit.author.name }}
-            🕐 Built at: $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
-            
-            git push
-            echo "✅ Site deployed successfully!"
-          fi
+            - name: Build Jekyll site to docs folder
+              run: |
+                  rm -rf docs/
+                  bundle exec jekyll build
+
+            - name: Add .nojekyll file
+              run: touch docs/.nojekyll
+
+            - name: Commit and push built site
+              run: |
+                  git config --local user.email "action@github.com"
+                  git config --local user.name "GitHub Actions Auto-Build"
+
+                  # Check if there are changes in docs folder
+                  git add docs/
+
+                  if git diff --staged --quiet; then
+                    echo "✅ No changes to deploy"
+                  else
+                    echo "🚀 Changes detected, deploying..."
+                    git commit -m "🤖 Auto-deploy: Build Jekyll site [skip ci]
+                    
+                    📝 Triggered by: ${{ github.event.head_commit.message }}
+                    👤 Author: ${{ github.event.head_commit.author.name }}
+                    🕐 Built at: $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+                    
+                    git push
+                    echo "✅ Site deployed successfully!"
+                  fi

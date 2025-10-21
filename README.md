@@ -11,7 +11,7 @@ A comprehensive study guide for the **Certified Ethical Hacker version 13 (CEH v
 ## ✨ Features
 
 - 🚀 **Automatic Deployment**: Push changes and GitHub Actions handles the build and deployment
-- 🔍 **Full-Text Search**: Find content across all modules instantly  
+- 🔍 **Full-Text Search**: Find content across all modules instantly
 - 📱 **Responsive Design**: Works perfectly on desktop, tablet, and mobile
 - 🎨 **Clean Interface**: Easy-to-read layout with proper syntax highlighting
 - ⚡ **Fast Loading**: Optimized Jekyll build with efficient navigation

@@ -3,6 +3,7 @@
 ## 🚀 Quick Update (Recommended)
 
 ### Method 1: Automatic with GitHub Actions (Easiest)
+
 1. Edit any file in the repository (modules, includes, layouts, etc.)
 2. Commit and push your changes:
    ```bash
@@ -16,7 +17,9 @@
    - No manual building required!
 
 ### Method 2: Manual Local Build
+
 If you prefer to build locally before pushing:
+
 ```bash
 # 1. Make your changes to any files
 # 2. Build the site
@@ -31,6 +34,7 @@ git push
 ## 📝 Common Update Tasks
 
 ### Adding a New Module
+
 1. Create new file in `_modules/` folder: `XX-new-module.md`
 2. Add front matter at the top:
    ```yaml
@@ -48,23 +52,28 @@ git push
 4. Commit and push (GitHub Actions will handle the rest)
 
 ### Updating Existing Content
+
 1. Edit any file in `_modules/` folder
 2. Save your changes
 3. Commit and push
 
 ### Updating Site Configuration
+
 - Edit `_config.yml` for site settings
 - Edit `_data/navigation.yml` for menu items
 - Edit `_includes/` files for reusable components
 
 ### Updating Styling
+
 - Edit `_sass/main.scss` for main styles
 - Edit `assets/css/main.scss` for additional styles
 
 ## 🛠 Development Workflow
 
 ### Local Development (Optional)
+
 To preview changes locally before pushing:
+
 ```bash
 # 1. Start local server
 bundle exec jekyll serve --livereload
@@ -75,6 +84,7 @@ bundle exec jekyll serve --livereload
 ```
 
 ### File Structure Reference
+
 ```
 ├── _modules/           # ← Edit these for content updates
 │   ├── 01-intro.md
@@ -91,6 +101,7 @@ bundle exec jekyll serve --livereload
 ## 🔧 Troubleshooting
 
 ### If GitHub Actions Fail
+
 1. Check the Actions tab in your GitHub repository
 2. Look at the build logs for error details
 3. Common issues:
@@ -99,6 +110,7 @@ bundle exec jekyll serve --livereload
    - Liquid template syntax errors
 
 ### If Local Build Fails
+
 ```bash
 # Check Jekyll/Ruby setup
 bundle install
@@ -109,6 +121,7 @@ bundle exec jekyll build
 ```
 
 ### Reset to Working State
+
 ```bash
 # If something breaks, you can always rebuild
 git pull origin main
@@ -118,13 +131,13 @@ rm -rf docs/
 
 ## 📋 Quick Reference
 
-| Task | Command |
-|------|---------|
-| Add new module | Create file in `_modules/` |
-| Update content | Edit existing `.md` files |
-| Local preview | `bundle exec jekyll serve` |
-| Manual build | `./build-jekyll.sh` |
-| Deploy | `git add -A && git commit -m "msg" && git push` |
+| Task           | Command                                         |
+| -------------- | ----------------------------------------------- |
+| Add new module | Create file in `_modules/`                      |
+| Update content | Edit existing `.md` files                       |
+| Local preview  | `bundle exec jekyll serve`                      |
+| Manual build   | `./build-jekyll.sh`                             |
+| Deploy         | `git add -A && git commit -m "msg" && git push` |
 
 ## 🎯 Pro Tips
 
@@ -136,5 +149,4 @@ rm -rf docs/
 
 ---
 
-**Live Site**: https://beingfluid.github.io/CEHv13/
-**Repository**: https://github.com/beingfluid/CEHv13
+**Live Site**: https://beingfluid.github.io/CEHv13/ **Repository**: https://github.com/beingfluid/CEHv13
