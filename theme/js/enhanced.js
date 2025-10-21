@@ -616,38 +616,57 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Hide rendered YAML front matter from display
 function hideFrontMatter() {
+  console.log("Running hideFrontMatter...");
+  
   // Find all h2 elements that contain front matter patterns
-  const h2Elements = document.querySelectorAll('h2');
+  const h2Elements = document.querySelectorAll("h2");
   
   h2Elements.forEach(h2 => {
     const text = h2.textContent.trim();
     
     // Check if this looks like rendered front matter
-    if (text.includes('module:') || text.includes('title:') || 
-        text.match(/^module:\s*['"]\d+['"]/) || 
-        text.match(/^title:\s*['"].+['"]/) ||
-        text === 'module: "3"' ||
-        text.includes('module: ') ||
-        text.includes('title: ')) {
-      
-      console.log('Hiding front matter element:', text);
-      h2.classList.add('front-matter-hidden');
+    // mdBook renders YAML as: module: "3" \n title: "Scanning Networks"
+    if (
+      text.includes("module:") ||
+      text.includes("title:") ||
+      text.match(/module:\s*['"]\d+['"]/) ||
+      text.match(/title:\s*['"].+['"]/) ||
+      (text.includes('module:') && text.includes('title:')) ||
+      text.match(/^module:\s*['"]\d+['"]\s*title:\s*['"].+['"]/) ||
+      text.includes("module: ") ||
+      text.includes("title: ")
+    ) {
+      console.log("Hiding front matter H2 element:", text);
+      h2.classList.add("front-matter-hidden");
+    }
+  });
+
+  // Hide HR elements that precede front matter (mdBook adds <hr/> before YAML)
+  const hrElements = document.querySelectorAll("hr");
+  
+  hrElements.forEach(hr => {
+    const nextElement = hr.nextElementSibling;
+    if (nextElement && nextElement.tagName === "H2" && 
+        (nextElement.textContent.includes("module:") || nextElement.textContent.includes("title:"))) {
+      console.log("Hiding front matter HR element");
+      hr.classList.add("front-matter-hidden");
     }
   });
 
   // Also check for any p elements that might contain front matter
-  const pElements = document.querySelectorAll('p');
-  
+  const pElements = document.querySelectorAll("p");
+
   pElements.forEach(p => {
     const text = p.textContent.trim();
-    
-    if ((text.includes('module:') && text.includes('title:')) ||
-        text.match(/^module:\s*['"]\d+['"]/) ||
-        text.match(/^title:\s*['"].+['"]/) ||
-        text === '---' && p.nextElementSibling?.textContent?.includes('module:')) {
-      
-      console.log('Hiding front matter paragraph:', text);
-      p.classList.add('front-matter-hidden');
+
+    if (
+      (text.includes("module:") && text.includes("title:")) ||
+      text.match(/^module:\s*['"]\d+['"]/) ||
+      text.match(/^title:\s*['"].+['"]/) ||
+      (text === "---" && p.nextElementSibling?.textContent?.includes("module:"))
+    ) {
+      console.log("Hiding front matter paragraph:", text);
+      p.classList.add("front-matter-hidden");
     }
   });
 }
