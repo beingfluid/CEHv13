@@ -3,6 +3,8 @@ module: "4"
 title: "Enumeration"
 ---
 
+# Module 4: Enumeration
+
 ## Course Outline
 
 Learn various enumeration techniques, including Border Gateway Protocol (BGP) and Network File Sharing (NFS) exploits and associated countermeasures.

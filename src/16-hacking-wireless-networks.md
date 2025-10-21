@@ -3,6 +3,8 @@ module: "16"
 title: "Hacking Wireless Networks"
 ---
 
+# Module 16: Hacking Wireless Networks
+
 ## Course Outline
 
 Learn about different types of encryption, threats, hacking methodologies, hacking tools, security tools, and countermeasures for wireless networks.

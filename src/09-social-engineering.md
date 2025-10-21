@@ -3,6 +3,8 @@ module: "9"
 title: "Social Engineering"
 ---
 
+# Module 9: Social Engineering
+
 ## Course Outline
 
 Learn social engineering concepts and techniques, including how to identify theft attempts, audit human-level vulnerabilities, and suggest social engineering countermeasures.

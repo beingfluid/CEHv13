@@ -3,6 +3,8 @@ module: "6"
 title: "System Hacking"
 ---
 
+# Module 6: System Hacking
+
 ## Course Outline
 
 Learn about the various system hacking methodologies used to discover system and network vulnerabilities, including steganography, steganalysis attacks, and how to cover tracks.

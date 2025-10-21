@@ -3,6 +3,8 @@ module: "8"
 title: "Sniffing"
 ---
 
+# Module 8: Sniffing
+
 ## Course Outline
 
 Learn about packet-sniffing techniques and their uses for discovering network vulnerabilities, plus countermeasures to defend against sniffing attacks.

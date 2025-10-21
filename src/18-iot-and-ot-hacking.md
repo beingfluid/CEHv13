@@ -3,6 +3,8 @@ module: "18"
 title: "IoT and OT Hacking"
 ---
 
+# Module 18: IoT and OT Hacking
+
 ## Course Outline
 
 Learn different types of Internet of Things (IoT) and operational technology (OT) attacks, hacking methodologies, hacking tools, and countermeasures.

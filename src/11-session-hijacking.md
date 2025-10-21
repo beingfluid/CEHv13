@@ -3,6 +3,8 @@ module: "11"
 title: "Session Hijacking"
 ---
 
+# Module 11: Session Hijacking
+
 ## Course Outline
 
 Learn the various session hijacking techniques used to discover network-level session management, authentication, authorization, and cryptographic weaknesses and associated countermeasures.

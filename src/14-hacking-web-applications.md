@@ -3,6 +3,8 @@ module: "14"
 title: "Hacking Web Applications"
 ---
 
+# Module 14: Hacking Web Applications
+
 ## Course Outline
 
 Identify vulnerabilities in web applications and learn about web application attacks and the tools used to audit for weaknesses and countermeasures to secure applications.

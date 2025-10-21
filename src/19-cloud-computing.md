@@ -3,6 +3,8 @@ module: "19"
 title: "Cloud Computing"
 ---
 
+# Module 19: Cloud Computing
+
 ## Course Outline
 
 Learn different cloud computing concepts, such as container technologies and serverless computing, various cloud computing threats, attacks, hacking methodologies, and cloud security techniques and tools.

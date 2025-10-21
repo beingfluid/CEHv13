@@ -3,6 +3,8 @@ module: "17"
 title: "Hacking Mobile Platforms"
 ---
 
+# Module 17: Hacking Mobile Platforms
+
 ## Course Outline
 
 Learn mobile platform attack vectors, Android and iOS hacking, mobile device management, mobile security guidelines, and security tools.

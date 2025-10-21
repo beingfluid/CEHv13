@@ -3,6 +3,8 @@ module: "13"
 title: "Hacking Web Servers"
 ---
 
+# Module 13: Hacking Web Servers
+
 ## Course Outline
 
 Identify vulnerabilities in web server infrastructures and learn about the various attacks used against web servers, including the tools used to audit for weaknesses and countermeasures.

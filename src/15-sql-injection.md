@@ -3,6 +3,8 @@ module: "15"
 title: "SQL Injection"
 ---
 
+# Module 15: SQL Injection
+
 ## Course Outline
 
 Learn about SQL injection attacks and evasion techniques, the tools used to audit for SQL injection vulnerabilities, and countermeasures.

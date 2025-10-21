@@ -3,6 +3,8 @@ module: "12"
 title: "Evading IDS, Firewalls, and Honeypots"
 ---
 
+# Module 12: Evading IDS, Firewalls, and Honeypots
+
 ## Course Outline
 
 Learn about firewall, intrusion detection system (IDS), and honeypot evasion techniques; the tools used to audit a network perimeter for weaknesses; and countermeasures.

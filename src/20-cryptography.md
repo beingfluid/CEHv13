@@ -3,6 +3,8 @@ module: "20"
 title: "Cryptography"
 ---
 
+# Module 20: Cryptography
+
 ## Course Outline
 
 Learn about encryption algorithms, cryptography tools, Public Key Infrastructure (PKI), email encryption, disk encryption, cryptography attacks, and cryptanalysis tools.

@@ -3,6 +3,8 @@ module: "10"
 title: "Denial-of-Service"
 ---
 
+# Module 10: Denial-of-Service
+
 ## Course Outline
 
 Learn about different Denial of Service (DoS) and Distributed DoS (DDoS) attack techniques, plus the tools used to audit a target and devise DoS and DDoS countermeasures and protections.
