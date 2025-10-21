@@ -610,20 +610,26 @@ document.addEventListener("DOMContentLoaded", () => {
     loadModuleQuestions();
   });
 
-  // Hide front matter content
-  hideFrontMatter();
+  // Hide front matter content with delay to ensure DOM is ready
+  setTimeout(() => {
+    hideFrontMatter();
+  }, 500);
 });
 
 // Hide rendered YAML front matter from display
 function hideFrontMatter() {
   console.log("Running hideFrontMatter...");
-  
-  // Find all h2 elements that contain front matter patterns
-  const h2Elements = document.querySelectorAll("h2");
-  
+
+  // Find all h2 elements in main content
+  const h2Elements = document.querySelectorAll("main h2");
+
   h2Elements.forEach(h2 => {
     const text = h2.textContent.trim();
     
+    // Log for debugging
+    console.log("Checking H2 element:", text);
+    console.log("Has ID:", h2.hasAttribute('id'));
+
     // Check if this looks like rendered front matter
     // mdBook renders YAML as: module: "3" \n title: "Scanning Networks"
     if (
@@ -631,25 +637,33 @@ function hideFrontMatter() {
       text.includes("title:") ||
       text.match(/module:\s*['"]\d+['"]/) ||
       text.match(/title:\s*['"].+['"]/) ||
-      (text.includes('module:') && text.includes('title:')) ||
+      (text.includes("module:") && text.includes("title:")) ||
       text.match(/^module:\s*['"]\d+['"]\s*title:\s*['"].+['"]/) ||
       text.includes("module: ") ||
-      text.includes("title: ")
+      text.includes("title: ") ||
+      !h2.hasAttribute('id') // Front matter h2s don't have IDs
     ) {
-      console.log("Hiding front matter H2 element:", text);
-      h2.classList.add("front-matter-hidden");
+      console.log("✅ Hiding front matter H2 element:", text);
+      h2.classList.add("front-matter-hidden", "front-matter-h2");
+      h2.style.display = "none"; // Force hide with inline style as backup
     }
   });
 
   // Hide HR elements that precede front matter (mdBook adds <hr/> before YAML)
-  const hrElements = document.querySelectorAll("hr");
-  
+  const hrElements = document.querySelectorAll("main hr");
+
   hrElements.forEach(hr => {
     const nextElement = hr.nextElementSibling;
-    if (nextElement && nextElement.tagName === "H2" && 
-        (nextElement.textContent.includes("module:") || nextElement.textContent.includes("title:"))) {
-      console.log("Hiding front matter HR element");
-      hr.classList.add("front-matter-hidden");
+    if (
+      nextElement &&
+      nextElement.tagName === "H2" &&
+      !nextElement.hasAttribute('id') &&
+      (nextElement.textContent.includes("module:") ||
+        nextElement.textContent.includes("title:"))
+    ) {
+      console.log("✅ Hiding front matter HR element");
+      hr.classList.add("front-matter-hidden", "front-matter-hr");
+      hr.style.display = "none"; // Force hide with inline style as backup
     }
   });
 

@@ -749,7 +749,21 @@ code:not(.hljs) {
   font-style: italic;
 }
 
-/* Hide YAML Front Matter Content (handled by JavaScript) */
+/* Hide YAML Front Matter Content */
 .front-matter-hidden {
+  display: none !important;
+}
+
+/* Direct CSS hiding as backup - hide h2 elements without id (likely front matter) */
+main hr + h2:not([id]) {
+  display: none !important;
+}
+
+/* Enhanced front matter hiding */
+.front-matter-h2 {
+  display: none !important;
+}
+
+.front-matter-hr {
   display: none !important;
 }
